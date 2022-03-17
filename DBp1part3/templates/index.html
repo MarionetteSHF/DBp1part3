@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <h1>profile</h1>
+      {% for key, value in data_dict.items() %}
+        <span>{{key}}</span>
+        <span>{{value["name"]}}</span>
+        <a href="/edit?nid={{key}}">edit</a>
+        <a href="/del/{{key}}">del</a>
+
+
+      {% endfor %}
+        <a href="/login">login</a>
+</body>
+</html>
