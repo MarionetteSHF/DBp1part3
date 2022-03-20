@@ -1,7 +1,8 @@
 from flask import Flask,render_template
 from .views.login import log
 from .views.test2 import testblue2
-from .views import  sql
+from . import sql
+
 DATA_dict = {
     '1':{'name': 'hanfu', 'age':25},
     '2':{'name': 'hanfu', 'age':52}
