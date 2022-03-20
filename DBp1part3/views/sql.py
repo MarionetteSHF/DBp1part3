@@ -27,7 +27,9 @@ def fetchall(table_name):
     # rows = cur.fetchall()
 
     return rows
-print(fetchall('Items_Posted'))
+rows = fetchall('Items_Posted')[0]
+print(rows[0])
+print(fetchall('Items_Posted')[0])
     # engine.commit()
     # cur.close()
     # engine.close()
