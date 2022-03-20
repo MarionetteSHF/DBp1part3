@@ -1,7 +1,7 @@
 from flask import Flask,render_template
 from .views.login import log
 from .views.test2 import testblue2
-
+from .views import  sql
 DATA_dict = {
     '1':{'name': 'hanfu', 'age':25},
     '2':{'name': 'hanfu', 'age':52}
@@ -13,7 +13,8 @@ def create_app():
 
     @app.route('/index')
     def index():
-        return render_template('index.html', data_dict=DATA_dict)
+        rows = sql.fetchall('Items_Posted')
+        return render_template('index.html', rows=rows)
 
     app.register_blueprint(log)
     app.register_blueprint(testblue2)
