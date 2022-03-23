@@ -1,6 +1,6 @@
 from flask import Flask,render_template
 from .views.login import auth
-from .views.test2 import testblue2
+from DBp1part3.auth import testblue2
 from . import sql
 from .views import post
 

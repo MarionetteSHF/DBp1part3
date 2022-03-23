@@ -14,16 +14,16 @@ def login():
         db = sql.get_db()
         cur = db.cursor()
         rows = cur.execute(
-            'SELECT encrypted_password  FROM Users WHERE name = %s', (username,)
+            'SELECT encrypted_password  FROM Users WHERE name = %s', (username)
         )
-        pwd = rows[0]
+        pwd = rows
         # print(rows)
         # print(pwd)
         if rows is None:
             error = 'No such username.'
         else:
             print(rows)
-            print(pwd)
+
         # elif not check_password_hash(pwd, password):
         #     error = 'Incorrect password.'
 
