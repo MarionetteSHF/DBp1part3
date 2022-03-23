@@ -14,22 +14,26 @@ def login():
         db = sql.get_db()
         cur = db.cursor()
         cur.execute(
-            "SELECT encrypted_password  FROM Users WHERE email = %s",
+            "SELECT encrypted_password,user_id  FROM Users WHERE email = %s",
             (email,),
         )
         rows = cur.fetchone()
-
+        print(rows)
         error = None
         # print(rows[0])
         if rows is None:
-            error = 'No such username.'+str(rows)
+            error = 'No such email.'+str(rows)
+            return render_template('auth/login.html', error=error)
 
 
         elif not check_password_hash(rows[0], password):
             error = 'Incorrect password.'
+            return render_template('auth/login.html', error=error)
 
 
         session['email']=email
+        session['id'] = rows[1]
+        print(session['id'])
         return redirect('index')
 
         # return render_template('auth/login.html', error=error)
