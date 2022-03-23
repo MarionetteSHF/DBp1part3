@@ -46,14 +46,13 @@ def fetchall(table_name):
     engine.commit()
 
     cur.execute("SELECT * FROM "+ str(table_name))
-    # rows = cur.fetchall()
-    rows = cur.fetchone()
+    rows = cur.fetchall()
+    # rows = cur.fetchone()
+
     # close_db()
-
-def post(table):
-    "Insert into table " + table
-
     return rows
+
+
 
 #     # engine.commit()
 #     # cur.close()

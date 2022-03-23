@@ -16,7 +16,7 @@ def login():
         error = 'no such user or pwd is wrong'
         return render_template('login.html', error=error)
     else:
-        return render_template('login.html')
+        return render_template('auth/login.html')
 
         # return jsonify('data':1000)
 
