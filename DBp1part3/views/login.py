@@ -1,7 +1,7 @@
 from flask import Blueprint,request,session,redirect,render_template,url_for,flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from DBp1part3 import sql
-auth= Blueprint('hf', __name__)
+auth= Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

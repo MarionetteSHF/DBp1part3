@@ -2,6 +2,8 @@ from flask import Flask,render_template
 from .views.login import auth
 from .views.test2 import testblue2
 from . import sql
+from .views import post
+
 
 DATA_dict = {
     '1':{'name': 'hanfu', 'age':25},
@@ -14,13 +16,13 @@ def create_app():
 
     @app.route('/index')
     def index():
-        rows = sql.fetchall('Users')
-
+        rows = sql.fetchall('Items_Posted')
         return render_template('index.html', rows=rows)
-        # return  str(rows[0][0])
 
     app.register_blueprint(auth)
     app.register_blueprint(testblue2)
+    app.register_blueprint(post.bp)
+    app.add_url_rule('/', endpoint='index')
     # app.register_blueprint(testblue, url_prefix ='/web')
     # app.register_blueprint(testblue2, url_prefix ='/admin')
     return app
