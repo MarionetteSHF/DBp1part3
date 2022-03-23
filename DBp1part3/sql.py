@@ -28,7 +28,7 @@ host_name = "w4111.cisxo09blonu.us-east-1.rds.amazonaws.com"
 user_name = "hs3239"
 password = "7505"
 
-def connectToDB():
+def get_db():
 
     engine = psycopg2.connect(
         database="proj1part2",
@@ -41,7 +41,7 @@ def connectToDB():
 
 def fetchall(table_name):
 
-    engine = connectToDB()
+    engine = get_db()
     cur = engine.cursor()
     engine.commit()
 
@@ -52,9 +52,7 @@ def fetchall(table_name):
 
 
     return rows
-rows = fetchall('Items_Posted')
 
-print(rows[0:2])
 #     # engine.commit()
 #     # cur.close()
 #     # engine.close()
