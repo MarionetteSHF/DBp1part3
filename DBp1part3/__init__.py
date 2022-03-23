@@ -16,7 +16,7 @@ def create_app():
     def index():
         rows = sql.fetchall('Users')
 
-        return render_template('index.html', rows=rows[0])
+        return render_template('index.html', rows=rows)
         # return  str(rows[0][0])
 
     app.register_blueprint(auth)

@@ -37,12 +37,14 @@ def get_db():
         host=host_name,
         port='5432'
     )
+
     return engine
 
 def fetchall(table_name):
 
     engine = get_db()
     cur = engine.cursor()
+
     engine.commit()
 
     cur.execute("SELECT * FROM "+ str(table_name))
