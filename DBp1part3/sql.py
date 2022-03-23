@@ -50,6 +50,8 @@ def fetchall(table_name):
     rows = cur.fetchone()
     # close_db()
 
+def post(table):
+    "Insert into table " + table
 
     return rows
 
