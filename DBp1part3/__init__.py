@@ -16,8 +16,14 @@ def create_app():
 
     @app.route('/index')
     def index():
-        rows = sql.fetchall('Items_Posted')
-        return render_template('index.html', rows=rows)
+        db = sql.get_db().cursor()
+        db.execute(
+            'SELECT posted_at, p.user_id, title, description, price, category,neededItem, u.name'
+            ' FROM Items_Posted p JOIN Users u ON p.user_id = u.user_id'
+            ' ORDER BY posted_at DESC'
+        )
+        posts = db.fetchall()
+        return render_template('web/index.html', posts=posts)
 
     app.register_blueprint(auth)
     app.register_blueprint(testblue2)
