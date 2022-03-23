@@ -4,7 +4,7 @@ from .login import auth
 from DBp1part3 import sql
 bp = Blueprint('post', __name__)
 
-@bp.route('/')
+@bp.route('/post')
 def index():
     db = sql.get_db().cursor()
     db.execute(

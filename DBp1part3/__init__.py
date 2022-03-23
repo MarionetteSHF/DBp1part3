@@ -1,6 +1,6 @@
 from flask import Flask,render_template
 from .views.login import auth
-from DBp1part3.auth import testblue2
+from DBp1part3.views.test2 import testblue2
 from . import sql
 from .views import post
 
@@ -16,7 +16,7 @@ def create_app():
 
     @app.route('/index')
     def index():
-        rows = sql.fetchall('Items_Posted')
+        rows = sql.fetchall('Users')
         return render_template('index.html', rows=rows)
 
     app.register_blueprint(auth)

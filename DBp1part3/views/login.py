@@ -7,31 +7,32 @@ auth= Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        print(request.form)
-        username = request.form['username']
+        # print(request.form)
+        email = request.form['email']
         password = request.form['pwd']
 
         db = sql.get_db()
         cur = db.cursor()
-        rows = cur.execute(
-            'SELECT encrypted_password  FROM Users WHERE name = %s', (username)
+        cur.execute(
+            "SELECT encrypted_password  FROM Users WHERE email = %s",
+            (email,),
         )
-        pwd = rows
-        # print(rows)
-        # print(pwd)
+        rows = cur.fetchone()
+
+        error = None
+        # print(rows[0])
         if rows is None:
-            error = 'No such username.'
-        else:
-            print(rows)
+            error = 'No such username.'+str(rows)
 
-        # elif not check_password_hash(pwd, password):
-        #     error = 'Incorrect password.'
 
-        # if user == 'x11' and pwd == 'y':
-        #     session['username']=user
-        #     return redirect('/index')
-        # error = 'no such user or pwd is wrong'
-        return render_template('auth/login.html', error=error)
+        elif not check_password_hash(rows[0], password):
+            error = 'Incorrect password.'
+
+
+        session['email']=email
+        return redirect('index')
+
+        # return render_template('auth/login.html', error=error)
     else:
         return render_template('auth/login.html')
 
