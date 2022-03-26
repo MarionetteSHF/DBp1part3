@@ -17,7 +17,14 @@
     {% else %}
         <a href="/create/{{id}}">post</a>
     {% endif %}
-
+    {% if wishRows %}
+        {% for x in wishRows %}
+    <!--        <span>{{key}}</span>-->
+            <span>{{x}}</span>
+    <!--        <a href="/edit?nid={{key}}">edit</a>-->
+        {% endfor %}
+    {% endif %}
 <a href="/index">main page</a>
+
 </body>
 </html>
