@@ -111,7 +111,7 @@ def profile(id):
     print(id)
     cur = db.cursor()
     cur.execute(
-        "SELECT *  FROM Users WHERE User_id = %s",
+        "SELECT *  FROM Whishlists_Create_add WHERE User_id = %s",
         (id,),
     )
     rows = cur.fetchone()
@@ -131,4 +131,5 @@ def add_to_wishlist(iid):
     rows = cur.fetchone()
     db.close()
     print(rows)
-    return render_template('web/profile.html', row=rows)
+    flash("success")
+    # return render_template('web/profile.html', row=rows)

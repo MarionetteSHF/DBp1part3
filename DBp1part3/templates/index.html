@@ -17,7 +17,8 @@
       {% endfor %}
       <a href="/register">register</a>
         <a href="/login">login</a>
-<a href="/profile/{{session['user_id'] if session['user_id'] else 0}}">profile</a>
+      <a href="/logout">log out</a>
+<a href="/profile/{{session['user_id'] if session['user_id'] else 1}}">profile</a>
 
 </body>
 </html>
