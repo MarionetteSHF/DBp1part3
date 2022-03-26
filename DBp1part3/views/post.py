@@ -141,3 +141,19 @@ def delete(id):
     cur.commit()
     db.close()
     return redirect(url_for('index'))
+    return render_template('web/profile.html', row=rows)
+
+@bp.route('/add_to_wish/<int:iid>')
+def add_to_wishlist(iid):
+    db = sql.get_db()
+    print(iid)
+    cur = db.cursor()
+    cur.execute(
+        "INSERT INTO Whishlists_Create_add (user_id, name, email, phone, encrypted_password  ) VALUES (default, %s, %s)",
+        (session['user_id'], iid),
+    )
+    rows = cur.fetchone()
+    db.close()
+    print(rows)
+    flash("success")
+    # return render_template('web/profile.html', row=rows)

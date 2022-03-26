@@ -9,7 +9,7 @@ DATA_dict = {
 def auth(func):
     @functools.wraps(func)
     def inner(*args, **kwargs):
-        username = session.get('xxx')
+        username = session.get('user_id')
         if not username:
             return redirect('/login')
 
