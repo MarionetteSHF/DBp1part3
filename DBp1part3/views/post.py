@@ -68,6 +68,7 @@ def update(iid):
     post = get_post(iid)
 
     if request.method == 'POST':
+
         title = request.form['title']
         description = request.form['description']
         price = request.form['price']
@@ -162,8 +163,9 @@ def add_to_wishlist(iid):
         "INSERT INTO Whishlists_Create_add (list_id, user_id, item_id  ) VALUES (default, %s, %s)",
         (session['user_id'], iid),
     )
+    db.commit()
     # rows = cur.fetchone()
     db.close()
     # print(rows)
-    flash("success")
-    return redirect("/index")
+    # flash("success")
+    return redirect("/profile/"+str(session['user_id']))
