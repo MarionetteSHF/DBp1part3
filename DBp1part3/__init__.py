@@ -16,7 +16,7 @@ def create_app():
 
     @app.route('/index')
     def index():
-        rows = sql.fetchall('Users')
+        rows = sql.fetchall('Items_Posted')
         return render_template('index.html', rows=rows)
 
     app.register_blueprint(auth)

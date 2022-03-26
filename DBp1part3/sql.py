@@ -51,7 +51,7 @@ def fetchall(table_name):
     rows = cur.fetchall()
     # rows = cur.fetchone()
 
-    # close_db()
+    engine.close()
     return rows
 
 

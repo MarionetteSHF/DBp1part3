@@ -44,12 +44,31 @@ def create():
 
 @bp.route('/display/<int:id>')
 @auth
-def display():
+def display(id):
     db = sql.get_db()
+    print(id)
     cur = db.cursor()
     cur.execute(
-        "SELECT encrypted_password,user_id  FROM Users WHERE email = %s",
+        "SELECT *  FROM Items_Posted WHERE item_id = %s",
         (id,),
     )
     rows = cur.fetchone()
+    db.close()
     print(rows)
+    return render_template('web/display.html', row = rows)
+    # redirect()
+
+@bp.route('/profile/<int:id>')
+@auth
+def profile(id):
+    db = sql.get_db()
+    print(id)
+    cur = db.cursor()
+    cur.execute(
+        "SELECT *  FROM Users WHERE User_id = %s",
+        (id,),
+    )
+    rows = cur.fetchone()
+    db.close()
+    print(rows)
+    return render_template('web/profile.html', row=rows)

@@ -5,19 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-      <h1>main page</h1>
+      <h1>profile</h1>
 
-
-      {% for x in rows %}
+      {% for x in row %}
 <!--        <span>{{key}}</span>-->
         <span>{{x}}</span>
 <!--        <a href="/edit?nid={{key}}">edit</a>-->
-        <a href="/display/{{x[1]}}">check the item</a>
+<!--        <a href="/display/{{x[1]}}">check the item</a>-->
 
       {% endfor %}
       <a href="/register">register</a>
         <a href="/login">login</a>
-<a href="/profile/{{session[user_id] if session[}}">profile</a>
+<a href="/index">main page</a>
 
 </body>
 </html>

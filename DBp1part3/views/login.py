@@ -18,6 +18,7 @@ def login():
             (email,),
         )
         rows = cur.fetchone()
+        db.close()
         print(rows)
         error = None
         # print(rows[0])
@@ -33,7 +34,8 @@ def login():
 
         session['email']=email
         session['user_id'] = rows[1]
-        print(session['id'])
+        print(session['user_id'])
+        print(session['email'])
         return redirect('index')
 
         # return render_template('auth/login.html', error=error)
@@ -72,7 +74,7 @@ def register():
                 error = f"User {username} is already registered."
             else:
                 return redirect(url_for("index"))
-
+        db.close()
         flash(error)
     return render_template('auth/register.html')
 

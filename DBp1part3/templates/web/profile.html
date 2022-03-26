@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+    <h1 >profile</h1>
+        {% for x in rows %}
+<!--        <span>{{key}}</span>-->
+            <span>{{x}}</span>
+<!--        <a href="/edit?nid={{key}}">edit</a>-->
+            <a href="/display/{{x[1]}}">check the item</a>
 
+        {% endfor %}
 </body>
 </html>
