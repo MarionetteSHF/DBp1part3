@@ -32,7 +32,7 @@ def login():
 
 
         session['email']=email
-        session['id'] = rows[1]
+        session['user_id'] = rows[1]
         print(session['id'])
         return redirect('index')
 
