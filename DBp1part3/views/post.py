@@ -40,3 +40,16 @@ def create():
             db.commit()
             return redirect(url_for('index'))
 
+
+
+@bp.route('/display/<int:id>')
+@auth
+def display():
+    db = sql.get_db()
+    cur = db.cursor()
+    cur.execute(
+        "SELECT encrypted_password,user_id  FROM Users WHERE email = %s",
+        (id,),
+    )
+    rows = cur.fetchone()
+    print(rows)
