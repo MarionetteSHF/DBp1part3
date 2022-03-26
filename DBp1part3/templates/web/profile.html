@@ -6,12 +6,17 @@
 </head>
 <body>
     <h1 >profile</h1>
+    {% if rows %}
         {% for x in rows %}
-<!--        <span>{{key}}</span>-->
+    <!--        <span>{{key}}</span>-->
             <span>{{x}}</span>
-<!--        <a href="/edit?nid={{key}}">edit</a>-->
-            <a href="/display/{{x[1]}}">check the item</a>
-
+    <!--        <a href="/edit?nid={{key}}">edit</a>-->
+            <a href="/create/{{id}}">post</a>
+            <a href="/update/{{x[4]}}">update</a>
         {% endfor %}
+    {% else %}
+        <a href="/create/{{id}}">post</a>
+    {% endif %}
+
 </body>
 </html>
