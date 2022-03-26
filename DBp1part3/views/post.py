@@ -119,17 +119,17 @@ def profile(id):
     print(rows)
     return render_template('web/profile.html', row=rows)
 
-@bp.route('/add_to_wish/<int:iid>')
+@bp.route('/addtowish/<int:iid>')
 def add_to_wishlist(iid):
     db = sql.get_db()
     print(iid)
     cur = db.cursor()
     cur.execute(
-        "INSERT INTO Whishlists_Create_add (user_id, name, email, phone, encrypted_password  ) VALUES (default, %s, %s)",
+        "INSERT INTO Whishlists_Create_add (list_id, user_id, item_id  ) VALUES (default, %s, %s)",
         (session['user_id'], iid),
     )
-    rows = cur.fetchone()
+    # rows = cur.fetchone()
     db.close()
-    print(rows)
+    # print(rows)
     flash("success")
-    # return render_template('web/profile.html', row=rows)
+    return redirect("/index")

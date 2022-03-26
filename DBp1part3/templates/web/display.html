@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-      <h1>profile</h1>
+      <h1>Item</h1>
 
       {% for x in row %}
 <!--        <span>{{key}}</span>-->
@@ -13,12 +13,12 @@
 <!--      <span>{{id}}</span>-->
 <!--        <a href="/edit?nid={{key}}">edit</a>-->
 <!--        <a href="/display/{{x[1]}}">check the item</a>-->
-<a href="/add_to_wish/{{x[1]}}">add to wish list</a>
+
       {% endfor %}
       <a href="/register">register</a>
         <a href="/login">login</a>
 <a href="/index">main page</a>
-
+<a href="/addtowish/{{row[1]}}">add to wish list</a>
 
 </body>
 </html>
