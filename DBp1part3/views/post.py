@@ -1,4 +1,4 @@
-from flask import Blueprint,flash, g, redirect, render_template, request, url_for
+from flask import Blueprint,flash, g, redirect, render_template, request, url_for,session
 from .test2 import auth
 from DBp1part3 import sql
 bp = Blueprint('post', __name__)
@@ -113,6 +113,20 @@ def profile(id):
     cur.execute(
         "SELECT *  FROM Users WHERE User_id = %s",
         (id,),
+    )
+    rows = cur.fetchone()
+    db.close()
+    print(rows)
+    return render_template('web/profile.html', row=rows)
+
+@bp.route('/add_to_wish/<int:iid>')
+def add_to_wishlist(iid):
+    db = sql.get_db()
+    print(iid)
+    cur = db.cursor()
+    cur.execute(
+        "INSERT INTO Whishlists_Create_add (user_id, name, email, phone, encrypted_password  ) VALUES (default, %s, %s)",
+        (session['user_id'], iid),
     )
     rows = cur.fetchone()
     db.close()
