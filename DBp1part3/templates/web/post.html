@@ -4,15 +4,21 @@
 
 {% block header %}
   <h1>{% block title %}New Post{% endblock %}</h1>
-{% endblock %}
 
-{% block content %}
-  <form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <label for="body">Description</label>
-    <textarea name="body" id="body">{{ request.form['description'] }}</textarea>
-    <input type="submit" value="Save">
-  </form>
+
+<body>
+    <h1>post</h1>
+    <form method="post">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="description"  placeholder="description">
+        <input type="text" name="price"  placeholder="price">
+        <input type="text" name="category"  placeholder="category">
+        <input type="text" name="number"  placeholder="number">
+        <input type="text" name="wantorsell"  placeholder="wantorsell">
+        <input type="submit" value="submit">
+        <span style="color:red">{{error}}</span>
+        <a href="/index">index page</a>
+    </form>
+</body>
 {% endblock %}
 </html>

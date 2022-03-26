@@ -9,12 +9,11 @@ from datetime import datetime
 @auth
 def create(uid):
     if request.method == 'POST':
-        posted_at = request.form['posted_at']
         title = request.form['title']
-        price = request.form['price']
-        number = request.form['number']
+        price = float(request.form['price'])
+        number = int(request.form['number'])
         category = request.form['category']
-        wantorsell = request.form['wantorsell']
+        wantorsell = bool(request.form['wantorsell'])
         description = request.form['description']
         error = None
 
@@ -33,11 +32,11 @@ def create(uid):
         else:
             db = sql.get_db()
             cur = db.cursor()
-            create_at = cur.Column(db.DateTime, default=datetime.now)
+            posted_at = datetime.now().strftime("%m/%d/%Y")
             cur.execute(
                 'INSERT INTO Items_Posted (posted_at, user_id, title, description, item_id, price, category, number, neededItem)'
-                'VALUES (%s, %s, %s, %s, %s, default, %s, %s, %s)',
-                (posted_at, create_at, uid, title, description, price, category, number, wantorsell)
+                'VALUES (%s, %s, %s, %s, default,%s, %s, %s, %s)',
+                (posted_at, uid, title, description, price, category, number, wantorsell)
             )
             db.commit()
             db.close()
@@ -45,12 +44,16 @@ def create(uid):
     return render_template('web/post.html')
 
 def get_post(iid):
-    post = sql.get_db().cursor().execute(
+    db = sql.get_db()
+    cur = db.cursor()
+    cur.execute(
         'SELECT *'
-        ' FROM Items_Posted p '
-        ' WHERE p.item_id = %s',
+        ' FROM Items_Posted '
+        ' WHERE item_id = %s',
         (iid,)
-    ).fetchone()
+    )
+    post = cur.fetchone()
+    db.close()
 
     if post is None:
         abort(404, f"Post id {iid} doesn't exist.")
@@ -61,7 +64,9 @@ def get_post(iid):
 @bp.route('/update/<int:iid>', methods=('GET', 'POST'))
 @auth
 def update(iid):
+    print(iid)
     post = get_post(iid)
+
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
@@ -134,9 +139,9 @@ def profile(id):
     wishRows = cur.fetchall()
     db.close()
     print(rows)
-    return render_template('web/profile.html', row=rows,id=id,wishRows=wishRows)
+    return render_template('web/profile.html', rows=rows,id=id,wishRows=wishRows)
 
-@bp.route('/delete/<int:id>', methods=('POST',))
+@bp.route('/delete/<int:id>')
 @auth
 def delete(id):
     get_post(id)
