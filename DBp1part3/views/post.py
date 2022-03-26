@@ -39,7 +39,7 @@ def create(uid):
                 'VALUES (%s, %s, %s, %s, %s, default, %s, %s, %s)',
                 (posted_at, create_at, uid, title, description, price, category, number, wantorsell)
             )
-            cur.commit()
+            db.commit()
             db.close()
             return redirect(url_for('index'))
     return render_template('web/post.html')
@@ -58,7 +58,7 @@ def get_post(iid):
     return post
 
 
-@bp.route('/<int:iid>/update', methods=('GET', 'POST'))
+@bp.route('/update/<int:iid>', methods=('GET', 'POST'))
 @auth
 def update(iid):
     post = get_post(iid)
@@ -92,7 +92,7 @@ def update(iid):
                 ' WHERE item_id = %s',
                 (title, price,wantorsell,number,category, iid)
             )
-            cur.commit()
+            db.commit()
             db.close()
             return redirect(url_for('index'))
 
@@ -127,19 +127,24 @@ def profile(id):
         "SELECT * FROM Items_Posted WHERE User_id = %s",
         (id,),
     )
-    rows = cur.fetchone()
+    rows = cur.fetchall()
+    cur.execute(
+        "SELECT * FROM Whishlists_Create_add WHERE User_id = %s",
+        (id,),
+    )
+    wishRows = cur.fetchall()
     db.close()
     print(rows)
-    return render_template('web/profile.html', row=rows,id=id)
+    return render_template('web/profile.html', row=rows,id=id,wishRows=wishRows)
 
-@bp.route('/<int:id>/delete', methods=('POST',))
+@bp.route('/delete/<int:id>', methods=('POST',))
 @auth
 def delete(id):
     get_post(id)
     db = sql.get_db()
     cur = db.cursor()
     cur.execute('DELETE FROM Items_Posted WHERE item_id = %', (id,))
-    cur.commit()
+    db.commit()
     db.close()
     return redirect(url_for('index'))
     return render_template('web/profile.html', row=rows)
