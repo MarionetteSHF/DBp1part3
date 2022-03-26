@@ -1,4 +1,5 @@
-from flask import Blueprint,flash, g, redirect, render_template, request, url_for,session
+from flask import Blueprint,flash, g, redirect, render_template, request, url_for
+from werkzeug.exceptions import abort
 from .test2 import auth
 from DBp1part3 import sql
 bp = Blueprint('post', __name__)
@@ -34,24 +35,33 @@ def create(uid):
             cur = db.cursor()
             create_at = cur.Column(db.DateTime, default=datetime.now)
             cur.execute(
-                'INSERT INTO Items_Posted (posted_at, user_id, title, description, price, category, number, neededItem)'
-                'VALUES (%s, %s, %s, %s, %s, %s, %s, %s)',
+                'INSERT INTO Items_Posted (posted_at, user_id, title, description, item_id, price, category, number, neededItem)'
+                'VALUES (%s, %s, %s, %s, %s, default, %s, %s, %s)',
                 (posted_at, create_at, uid, title, description, price, category, number, wantorsell)
             )
             cur.commit()
+            db.close()
             return redirect(url_for('index'))
-    return render_template('post.html')
+    return render_template('web/post.html')
 
-@bp.route('/<int:uid>/update', methods=('GET', 'POST'))
-@auth
-def update(uid):
+def get_post(iid):
     post = sql.get_db().cursor().execute(
-        'SELECT p.user_id, title, description,  price, category, number, neededItem'
-        ' FROM Items_Posted p JOIN Users u ON p.user_id = u.user_id'
-        ' WHERE p.user_id = %s',
-        (uid,)
+        'SELECT *'
+        ' FROM Items_Posted p '
+        ' WHERE p.item_id = %s',
+        (iid,)
     ).fetchone()
 
+    if post is None:
+        abort(404, f"Post id {iid} doesn't exist.")
+
+    return post
+
+
+@bp.route('/<int:iid>/update', methods=('GET', 'POST'))
+@auth
+def update(iid):
+    post = get_post(iid)
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
@@ -74,16 +84,18 @@ def update(uid):
         if error is not None:
             flash(error)
         else:
-            cur = sql.get_db().cursor()
+            db = sql.get_db()
+            cur = db.cursor()
             cur.execute(
                 'UPDATE Items_Posted SET title = %s, price = %s, wantorsell = %s, number = %s, category = %s'
-                ' WHERE user_id = ?',
-                (title, price,wantorsell,number,category, uid)
+                ' WHERE item_id = %s',
+                (title, price,wantorsell,number,category, iid)
             )
             cur.commit()
-            return redirect(url_for('blog.index'))
+            db.close()
+            return redirect(url_for('index'))
 
-    return render_template('blog/update.html', post=post)
+    return render_template('web/update.html', post=post)
 
 
 
@@ -111,12 +123,24 @@ def profile(id):
     print(id)
     cur = db.cursor()
     cur.execute(
-        "SELECT *  FROM Whishlists_Create_add WHERE User_id = %s",
+        "SELECT * FROM Items_Posted WHERE User_id = %s",
         (id,),
     )
     rows = cur.fetchone()
     db.close()
     print(rows)
+    return render_template('web/profile.html', row=rows,id=id)
+
+@bp.route('/<int:id>/delete', methods=('POST',))
+@auth
+def delete(id):
+    get_post(id)
+    db = sql.get_db()
+    cur = db.cursor()
+    cur.execute('DELETE FROM Items_Posted WHERE item_id = %', (id,))
+    cur.commit()
+    db.close()
+    return redirect(url_for('index'))
     return render_template('web/profile.html', row=rows)
 
 @bp.route('/addtowish/<int:iid>')
