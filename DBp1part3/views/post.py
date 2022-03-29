@@ -66,7 +66,7 @@ def get_post(iid):
 def update(iid):
     print(iid)
     post = get_post(iid)
-
+    print(post[3])
     if request.method == 'POST':
 
         title = request.form['title']
@@ -93,7 +93,7 @@ def update(iid):
             db = sql.get_db()
             cur = db.cursor()
             cur.execute(
-                'UPDATE Items_Posted SET title = %s, price = %s, wantorsell = %s, number = %s, category = %s'
+                'UPDATE Items_Posted SET title = %s, price = %s, neededItem = %s, number = %s, category = %s'
                 ' WHERE item_id = %s',
                 (title, price,wantorsell,number,category, iid)
             )

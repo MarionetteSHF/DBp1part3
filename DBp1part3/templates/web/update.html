@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+  <h1>{% block title %}Edit "{{ post[2] }}"{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -11,12 +11,12 @@
 <body>
     <h1>post</h1>
     <form method="post">
-        <input type="text" name="title" placeholder="title">
-        <input type="text" name="description"  placeholder="description">
-        <input type="text" name="price"  placeholder="price">
-        <input type="text" name="category"  placeholder="category">
-        <input type="text" name="number"  placeholder="number">
-        <input type="text" name="wantorsell"  placeholder="wantorsell">
+        <input type="text" name="title" placeholder="title" value ={{post[2]}}>
+        <input type="text" name="description"  placeholder="description" value ={{post[3]}}>
+        <input type="text" name="price"  placeholder="price" value ={{post[5]}}>
+        <input type="text" name="category"  placeholder="category" value ={{post[6]}}>
+        <input type="text" name="number"  placeholder="number" value ={{post[7]}}>
+        <input type="text" name="wantorsell"  placeholder="wantorsell" value ={{post[8]}}>
         <input type="submit" value="submit">
         <span style="color:red">{{error}}</span>
         <a href="/index">index page</a>
