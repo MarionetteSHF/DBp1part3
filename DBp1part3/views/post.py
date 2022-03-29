@@ -1,10 +1,13 @@
-from flask import Blueprint,flash, g, redirect, render_template, request, url_for,session
+from flask import Flask, Blueprint,flash, g, redirect, render_template, request, url_for,session
 from werkzeug.exceptions import abort
 from .test2 import auth
 from DBp1part3 import sql
-bp = Blueprint('post', __name__)
+import urllib.request
+import os
+from werkzeug.utils import secure_filename
 from datetime import datetime
 
+bp = Blueprint('post', __name__)
 @bp.route('/create/<int:uid>', methods=('GET', 'POST'))
 @auth
 def create(uid):
@@ -169,3 +172,65 @@ def add_to_wishlist(iid):
     # print(rows)
     # flash("success")
     return redirect("/profile/"+str(session['user_id']))
+
+
+def convertToBinaryData(filename):
+    # Convert digital data to binary format
+    with open(filename, 'rb') as file:
+        binaryData = file.read()
+    return binaryData
+
+def insertBLOB(iid, photo):
+    db = sql.get_db()
+    cur = db.cursor()
+    sql_insert_blob_query = """ INSERT INTO Photos
+    (photo_id, item_id, photo) VALUES (default,%s,%s)"""
+
+    picture = convertToBinaryData(photo)
+    result = cur.execute(sql_insert_blob_query, (iid,picture))
+    db.commit()
+    db.close()
+    print("Image inserted successfully as a BLOB into table", result)
+
+UPLOAD_FOLDER = 'static/uploads/'
+
+bp.secret_key = "secret key"
+bp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+bp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@bp.route('/', methods=['POST'])
+def upload_image():
+    db = sql.get_db()
+    cursor = db.cursor()
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        flash('No image selected for uploading')
+        return redirect(request.url)
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(bp.config['UPLOAD_FOLDER'], filename))
+        # print('upload_image filename: ' + filename)
+
+        cursor.execute("INSERT INTO upload (title) VALUES (%s)", (filename,))
+        db.commit()
+
+        flash('Image successfully uploaded and displayed below')
+        return render_template('index.html', filename=filename)
+    else:
+        flash('Allowed image types are - png, jpg, jpeg, gif')
+        return render_template('web/post.html')
+
+@bp.route('/display/<filename>')
+def display_image(filename):
+    #print('display_image filename: ' + filename)
+    return redirect(url_for('static', filename='uploads/' + filename), code=301)
