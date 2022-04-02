@@ -1,0 +1,347 @@
+/* screen - sign-in */
+
+.sign-in {
+  background-color: var(--white);
+  height: 100vh;
+  margin: 0px;
+  min-height: 1006px;
+  min-width: 2233px;
+  mix-blend-mode: normal;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.sign-in .rectangle-6-5xOTHh {
+  background-color: #f1eeee;
+  height: 1006px;
+  left: 0px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 0px;
+  width: 2231px;
+}
+
+.sign-in .rectangle-7-5xOTHh {
+  background-color: var(--white);
+  height: 1006px;
+  left: 0px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 0px;
+  width: 2231px;
+}
+
+.sign-in .forgot-password-1-5xOTHh {
+  background-color: transparent;
+  height: 39px;
+  left: 800px;
+  mix-blend-mode: normal;
+  object-fit: cover;
+  position: absolute;
+  top: 503px;
+  width: 35px;
+}
+
+.sign-in .circulation-5xOTHh {
+  background-color: transparent;
+  height: auto;
+  left: 193px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 28px;
+  width: 366px;
+}
+
+.sign-in .rectangle-8-5xOTHh {
+  background-color: transparent;
+  height: 1006px;
+  left: 1075px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 16px;
+  width: 1189px;
+}
+
+.sign-in .login-5xOTHh {
+  background-color: transparent;
+  color: #1288bc;
+  font-family: var(--font-family-poppins);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 622px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 59px;
+  width: 127px;
+}
+
+.sign-in .sign-up-5xOTHh {
+  background-color: transparent;
+  color: var(--star-dust);
+  font-family: var(--font-family-poppins);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 749px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 59px;
+  width: 230px;
+}
+
+.sign-in .loginbttn-5xOTHh {
+  background-color: transparent;
+  height: 104px;
+  left: 85px;
+  position: absolute;
+  top: 652px;
+  width: 768px;
+}
+
+.sign-in .rectangle-9-YBtbWr {
+  background-color: transparent;
+  height: 144px;
+  left: -21px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: -17px;
+  width: 806px;
+}
+
+.sign-in .sign-in-YBtbWr {
+  background-color: transparent;
+  color: var(--white);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 302px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 18px;
+  width: 180px;
+}
+
+.sign-in .sign-in-5xOTHh {
+  background-color: transparent;
+  color: #5e5e5e;
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 85px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 230px;
+  width: 222px;
+}
+
+.sign-in .sigin-in-to-start-selling-items-5xOTHh {
+  background-color: transparent;
+  color: #8c8c8c;
+  font-family: var(--font-family-poppins);
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 81px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 310px;
+  width: 733px;
+}
+
+.sign-in .line-1-5xOTHh {
+  background-color: transparent;
+  height: 1px;
+  left: 85px;
+  position: absolute;
+  top: 452px;
+  width: 766px;
+}
+
+.sign-in .line-2-5xOTHh {
+  background-color: transparent;
+  height: 1px;
+  left: 85px;
+  position: absolute;
+  top: 553px;
+  width: 766px;
+}
+
+.sign-in .logo-5xOTHh {
+  background-color: transparent;
+  height: 86px;
+  left: 85px;
+  position: absolute;
+  top: 28px;
+  width: 97px;
+}
+
+.sign-in .ellipse-1-P4dCxW {
+  background-color: transparent;
+  border-radius: 48.38px/42.89px;
+  height: 86px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 97px;
+}
+
+.sign-in .ellipse-2-P4dCxW {
+  background-color: transparent;
+  border-radius: 36.5px/28.86px;
+  height: 58px;
+  left: 24px;
+  position: absolute;
+  top: 19px;
+  width: 73px;
+}
+
+.sign-in .ellipse-3-P4dCxW {
+  background-color: transparent;
+  height: 34px;
+  left: 40px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 31px;
+  width: 44px;
+}
+
+.sign-in .youremailcolumbiacom-5xOTHh {
+  background-color: transparent;
+  border: 0;
+  color: #44aedb;
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xxxxs);
+  font-style: normal;
+  font-weight: 400;
+  height: 37px;
+  left: 86px;
+  letter-spacing: 1.10px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  padding: 0;
+  position: absolute;
+  resize: none;
+  text-align: left;
+  top: 402px;
+  width: 443px;
+}
+
+.sign-in .youremailcolumbiacom-5xOTHh::placeholder {
+  color: #44aedb99;
+}
+
+.sign-in .password-5xOTHh {
+  background-color: transparent;
+  border: 0;
+  color: #9f9f9f;
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xxxxs);
+  font-style: normal;
+  font-weight: 400;
+  height: 37px;
+  left: 85px;
+  letter-spacing: 1.10px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  padding: 0;
+  position: absolute;
+  resize: none;
+  text-align: left;
+  top: 510px;
+  width: 166px;
+}
+
+.sign-in .password-5xOTHh::placeholder {
+  color: #9f9f9f99;
+}
+
+.sign-in .forgot-password-5xOTHh {
+  background-color: transparent;
+  color: #888888;
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xxxxs);
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  left: 658px;
+  letter-spacing: 1.10px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  text-shadow: 0px 4px 20px #00000040;
+  top: 573px;
+  width: 307px;
+}
+
+.sign-in .x584856bce0bb315b0f7675ad-1-5xOTHh {
+  background-color: transparent;
+  height: 47px;
+  left: 794px;
+  mix-blend-mode: normal;
+  object-fit: cover;
+  position: absolute;
+  top: 388px;
+  width: 47px;
+}
+
+.sign-in .ellipse-7-5xOTHh {
+  background-color: #8bd4f33d;
+  border-radius: 471px/410px;
+  height: 820px;
+  left: 1154px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 77px;
+  width: 942px;
+}
+
+.sign-in .ellipse-8-5xOTHh {
+  background-color: #8bd4f33d;
+  border-radius: 375px/323.5px;
+  height: 647px;
+  left: 1265px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 163px;
+  width: 750px;
+}
+
+.sign-in .undraw_web_shopping_re_owap-1-5xOTHh {
+  background-color: transparent;
+  height: 563px;
+  left: 1265px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 202px;
+  width: 722px;
+}

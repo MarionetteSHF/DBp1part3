@@ -1,0 +1,78 @@
+:root { 
+  --black: #000000;
+  --gravel: #4a4a4a;
+  --mercury: #e5e5e5;
+  --moonstone: #36a5d4;
+  --star-dust: #9d9d9d;
+  --white: #ffffff;
+ 
+  --font-size-m: 48px;
+  --font-size-s: 40px;
+  --font-size-xs: 36px;
+  --font-size-xxs: 30px;
+  --font-size-xxxs: 28px;
+  --font-size-xxxxs: 22px;
+  --font-size-xxxxxs: 20px;
+ 
+  --font-family-poppins: "Poppins", Helvetica;
+  --font-family-roboto: "Roboto", Helvetica;
+}
+.poppins-normal-star-dust-48px {
+  color: var(--star-dust);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.poppins-bold-white-30px {
+  color: var(--white);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.roboto-normal-black-28px {
+  color: var(--black);
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xxxs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.poppins-normal-black-20px {
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxxxs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.poppins-bold-gravel-60px {
+  color: var(--gravel);
+  font-family: var(--font-family-poppins);
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.roboto-normal-black-30px {
+  color: var(--black);
+  font-family: var(--font-family-roboto);
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.poppins-bold-black-30px {
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.border-4px-moonstone {
+  border: 4px solid var(--moonstone);
+}

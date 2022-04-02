@@ -1,0 +1,734 @@
+/* screen - dashboard */
+
+.dashboard {
+  background-color: var(--white);
+  height: 100vh;
+  margin: 0px;
+  min-height: 1569px;
+  min-width: 2229px;
+  mix-blend-mode: normal;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.dashboard .rectangle-10-aYWuA2 {
+  background-color: transparent;
+  height: 1569px;
+  left: -139px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: -16px;
+  width: 401px;
+}
+
+.dashboard .wishlist-aYWuA2 {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 451px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 21px;
+  width: 729px;
+}
+
+.dashboard .your-items-aYWuA2 {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 451px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 724px;
+  width: 729px;
+}
+
+.dashboard .group-4-aYWuA2 {
+  background-color: transparent;
+  height: 509px;
+  left: 416px;
+  position: absolute;
+  top: 202px;
+  width: 1863px;
+}
+
+.dashboard .item-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 117px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 5px;
+  width: 366px;
+}
+
+.dashboard .date-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 432px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 5px;
+  width: 367px;
+}
+
+.dashboard .price-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 729px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 0px;
+  width: 366px;
+}
+
+.dashboard .seller-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1033px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 0px;
+  width: 367px;
+}
+
+.dashboard .line-5-O1EgMW {
+  background-color: transparent;
+  height: 9px;
+  left: 0px;
+  position: absolute;
+  top: 495px;
+  width: 1765px;
+}
+
+.dashboard .line-4-O1EgMW {
+  background-color: transparent;
+  height: 9px;
+  left: 2px;
+  position: absolute;
+  top: 380px;
+  width: 1813px;
+}
+
+.dashboard .x12817-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 432px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 170px;
+  width: 367px;
+}
+
+.dashboard .x95-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 729px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 179px;
+  width: 366px;
+}
+
+.dashboard .albert-flores-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1029px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 176px;
+  width: 366px;
+}
+
+.dashboard .x307-555-0133-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1398px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 170px;
+  width: 367px;
+}
+
+.dashboard .phone-number-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1398px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 9px;
+  width: 367px;
+}
+
+.dashboard .x12817-SS62L7 {
+  background-color: transparent;
+  height: auto;
+  left: 432px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 170px;
+  width: 367px;
+}
+
+.dashboard .albert-flores-SS62L7 {
+  background-color: transparent;
+  height: auto;
+  left: 1029px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 176px;
+  width: 366px;
+}
+
+.dashboard .x307-555-0133-SS62L7 {
+  background-color: transparent;
+  height: auto;
+  left: 1398px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 170px;
+  width: 367px;
+}
+
+.dashboard .bambi-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 104px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 418px;
+  width: 367px;
+}
+
+.dashboard .x81517-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 432px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 418px;
+  width: 367px;
+}
+
+.dashboard .x2885-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 729px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 427px;
+  width: 366px;
+}
+
+.dashboard .guy-hawkins-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1029px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 422px;
+  width: 366px;
+}
+
+.dashboard .x671-555-0110-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1398px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 418px;
+  width: 367px;
+}
+
+.dashboard .periodic-table-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 104px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 289px;
+  width: 367px;
+}
+
+.dashboard .siddhartha-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 104px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 170px;
+  width: 367px;
+}
+
+.dashboard .x102812-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 432px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 289px;
+  width: 367px;
+}
+
+.dashboard .x7958-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 729px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 298px;
+  width: 366px;
+}
+
+.dashboard .ralph-edwards-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1029px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 294px;
+  width: 366px;
+}
+
+.dashboard .x302-555-0107-O1EgMW {
+  background-color: transparent;
+  height: auto;
+  left: 1397px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 293px;
+  width: 367px;
+}
+
+.dashboard .line-4-SS62L7 {
+  background-color: transparent;
+  height: 4px;
+  left: 0px;
+  position: absolute;
+  top: 271px;
+  width: 1764px;
+}
+
+.dashboard .group-5-aYWuA2 {
+  background-color: transparent;
+  height: 465px;
+  left: 416px;
+  position: absolute;
+  top: 914px;
+  width: 1867px;
+}
+
+.dashboard .item-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 117px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 1px;
+  width: 370px;
+}
+
+.dashboard .price-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 476px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 1px;
+  width: 370px;
+}
+
+.dashboard .edit-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 1041px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 0px;
+  width: 371px;
+}
+
+.dashboard .line-5-7WaHGN {
+  background-color: transparent;
+  height: 9px;
+  left: 0px;
+  position: absolute;
+  top: 456px;
+  width: 1783px;
+}
+
+.dashboard .line-4-7WaHGN {
+  background-color: transparent;
+  height: 9px;
+  left: 11px;
+  position: absolute;
+  top: 335px;
+  width: 1813px;
+}
+
+.dashboard .x95-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 471px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 116px;
+  width: 370px;
+}
+
+.dashboard .edit-30Wch3 {
+  background-color: transparent;
+  height: auto;
+  left: 1039px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 122px;
+  width: 370px;
+}
+
+.dashboard .delete-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 1412px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 116px;
+  width: 371px;
+}
+
+.dashboard .delete-30Wch3 {
+  background-color: transparent;
+  height: auto;
+  left: 1412px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 0px;
+  width: 371px;
+}
+
+.dashboard .bambi-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 105px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 375px;
+  width: 371px;
+}
+
+.dashboard .x2885-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 476px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 371px;
+  width: 370px;
+}
+
+.dashboard .edit-3Pc50P {
+  background-color: transparent;
+  height: auto;
+  left: 1039px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 379px;
+  width: 370px;
+}
+
+.dashboard .delete-3Pc50P {
+  background-color: transparent;
+  height: auto;
+  left: 1412px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 375px;
+  width: 371px;
+}
+
+.dashboard .periodic-table-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 105px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 240px;
+  width: 371px;
+}
+
+.dashboard .siddhartha-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 105px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 116px;
+  width: 371px;
+}
+
+.dashboard .x7958-7WaHGN {
+  background-color: transparent;
+  height: auto;
+  left: 476px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 246px;
+  width: 370px;
+}
+
+.dashboard .edit-tCKxin {
+  background-color: transparent;
+  height: auto;
+  left: 1039px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 246px;
+  width: 370px;
+}
+
+.dashboard .delete-tCKxin {
+  background-color: transparent;
+  height: auto;
+  left: 1411px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 245px;
+  width: 371px;
+}
+
+.dashboard .line-4-30Wch3 {
+  background-color: transparent;
+  height: 4px;
+  left: 0px;
+  position: absolute;
+  top: 221px;
+  width: 1782px;
+}
+
+.dashboard .hi-sarah-aYWuA2 {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  left: 86px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 84px;
+  width: 244px;
+}
+
+.dashboard .logo-aYWuA2 {
+  background-color: transparent;
+  height: 86px;
+  left: 2123px;
+  position: absolute;
+  top: 7px;
+  width: 97px;
+}
+
+.dashboard .ellipse-1-lvN43b {
+  background-color: transparent;
+  border-radius: 48.38px/42.89px;
+  height: 86px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 97px;
+}
+
+.dashboard .ellipse-2-lvN43b {
+  background-color: transparent;
+  border-radius: 36.5px/28.86px;
+  height: 58px;
+  left: 24px;
+  position: absolute;
+  top: 19px;
+  width: 73px;
+}
+
+.dashboard .ellipse-3-lvN43b {
+  background-color: transparent;
+  height: 34px;
+  left: 41px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 31px;
+  width: 44px;
+}
+
+.dashboard .loginbttn-aYWuA2 {
+  background-color: transparent;
+  height: 104px;
+  left: 1432px;
+  position: absolute;
+  top: 1429px;
+  width: 768px;
+}
+
+.dashboard .rectangle-9-XqM7kl {
+  background-color: transparent;
+  height: 144px;
+  left: -20px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: -16px;
+  width: 806px;
+}
+
+.dashboard .back-to-main-screen-XqM7kl {
+  background-color: transparent;
+  color: var(--white);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 210px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 21px;
+  width: 512px;
+}

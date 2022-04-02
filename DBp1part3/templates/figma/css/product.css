@@ -1,0 +1,445 @@
+/* screen - product */
+
+.product {
+  background-color: var(--white);
+  height: 100vh;
+  margin: 0px;
+  min-height: 1006px;
+  min-width: 2233px;
+  mix-blend-mode: normal;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.product .rectangle-348-xxEPoA {
+  background-color: transparent;
+  height: 1012px;
+  left: 1801px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: -4px;
+  width: 429px;
+}
+
+.product .circulation-xxEPoA {
+  background-color: transparent;
+  height: auto;
+  left: 180px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 91px;
+  width: 366px;
+}
+
+.product .logo-xxEPoA {
+  background-color: transparent;
+  height: 86px;
+  left: 64px;
+  position: absolute;
+  top: 91px;
+  width: 97px;
+}
+
+.product .logo-lxjLxJ {
+  background-color: transparent;
+  height: 86px;
+  left: 0px;
+  position: relative;
+  top: 0px;
+  width: 97px;
+}
+
+.product .ellipse-1-IWR4TP {
+  background-color: transparent;
+  border-radius: 48.38px/42.89px;
+  height: 86px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 97px;
+}
+
+.product .ellipse-2-IWR4TP {
+  background-color: transparent;
+  border-radius: 36.5px/28.86px;
+  height: 58px;
+  left: 24px;
+  position: absolute;
+  top: 19px;
+  width: 73px;
+}
+
+.product .ellipse-3-IWR4TP {
+  background-color: transparent;
+  height: 34px;
+  left: 41px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 31px;
+  width: 44px;
+}
+
+.product .recent-views-xxEPoA {
+  background-color: transparent;
+  height: 718px;
+  left: 1824px;
+  position: absolute;
+  top: 256px;
+  width: 1px;
+}
+
+.product .line-7-fG3Npa {
+  background-color: transparent;
+  height: 718px;
+  left: -1px;
+  position: absolute;
+  top: 0px;
+  width: 3px;
+}
+
+.product .account-xxEPoA {
+  background-color: transparent;
+  height: 56px;
+  left: 1946px;
+  position: absolute;
+  top: 108px;
+  width: 241px;
+}
+
+.product .your-profile-QN0s2C {
+  -webkit-text-stroke: 1px var(--black);
+  background-color: transparent;
+  height: auto;
+  left: -1px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 5px;
+  width: 170px;
+}
+
+.product .align-justify-QN0s2C {
+  background-color: transparent;
+  height: 43px;
+  left: 197px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 0px;
+  width: 42px;
+}
+
+.product .item_view-xxEPoA {
+  background-color: transparent;
+  height: 535px;
+  left: 52px;
+  overflow: hidden;
+  position: absolute;
+  top: 219px;
+  width: 744px;
+}
+
+.product .s-l640-1-Kka4zD {
+  background-color: transparent;
+  height: 385px;
+  left: 166px;
+  mix-blend-mode: normal;
+  object-fit: cover;
+  position: absolute;
+  top: 75px;
+  width: 381px;
+}
+
+.product .slider_left-Kka4zD {
+  background-color: var(--mercury);
+  height: 535px;
+  left: 0px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 0px;
+  width: 110px;
+}
+
+.product .slider_right-Kka4zD {
+  background-color: var(--mercury);
+  height: 535px;
+  left: 603px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 0px;
+  width: 110px;
+}
+
+.product .next-Kka4zD {
+  background-color: transparent;
+  height: 89px;
+  left: 628px;
+  position: absolute;
+  top: 223px;
+  width: 59px;
+}
+
+.product .prev-Kka4zD {
+  background-color: transparent;
+  height: 89px;
+  left: 25px;
+  position: absolute;
+  top: 223px;
+  width: 59px;
+}
+
+.product .item_preview-xxEPoA {
+  background-color: transparent;
+  height: 209px;
+  left: 52px;
+  overflow: hidden;
+  position: absolute;
+  top: 799px;
+  width: 721px;
+}
+
+.product .frame-2-ZpxOtR {
+  background-color: var(--white);
+  border: 1px solid var(--mercury);
+  box-shadow: 0px 4px 4px #00000040 , 0px 4px 4px #00000040;
+  height: 160px;
+  left: calc(50.00% - 360px);
+  mix-blend-mode: normal;
+  overflow: hidden;
+  position: absolute;
+  top: calc(50.00% - 82px);
+  width: 180px;
+}
+
+.product .preview1-134Lui {
+  background-color: transparent;
+  height: 156px;
+  left: 15px;
+  mix-blend-mode: normal;
+  object-fit: cover;
+  position: absolute;
+  top: 0px;
+  width: 150px;
+}
+
+.product .frame-1-ZpxOtR {
+  background-color: var(--white);
+  border: 1px solid var(--mercury);
+  box-shadow: 0px 4px 4px #00000040 , 0px 4px 4px #00000040;
+  height: 160px;
+  left: calc(50.00% - 150px);
+  mix-blend-mode: normal;
+  overflow: hidden;
+  position: absolute;
+  top: calc(50.00% - 82px);
+  width: 180px;
+}
+
+.product .preview2-7yQ05g {
+  background-color: transparent;
+  height: 158px;
+  left: 13px;
+  mix-blend-mode: normal;
+  object-fit: cover;
+  position: absolute;
+  top: 0px;
+  width: 150px;
+}
+
+.product .item_name-xxEPoA {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 987px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 219px;
+  width: 571px;
+}
+
+.product .item_name-rHDz4u {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  height: auto;
+  left: 983px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 303px;
+  width: 176px;
+}
+
+.product .whishlist-xxEPoA {
+  background-color: transparent;
+  height: 80px;
+  left: 1064px;
+  position: absolute;
+  top: 422px;
+  width: 386px;
+}
+
+.product .rectangle-9-RWpxIl {
+  background-color: transparent;
+  height: 120px;
+  left: -20px;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: -16px;
+  width: 420px;
+}
+
+.product .add-to-wishlist-RWpxIl {
+  background-color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 133px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 17px;
+  width: 251px;
+}
+
+.product .icon-heart-RWpxIl {
+  background-color: transparent;
+  height: 39.38%;
+  left: 19.36%;
+  mix-blend-mode: normal;
+  position: absolute;
+  top: 11.11%;
+  width: 10.24%;
+}
+
+.product .information_wrapper-xxEPoA {
+  background-color: transparent;
+  height: 176px;
+  left: 959px;
+  overflow: hidden;
+  position: absolute;
+  top: 578px;
+  width: 595px;
+}
+
+.product .description-dmlpKf {
+  background-color: transparent;
+  height: auto;
+  left: 23px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 16px;
+  width: 200px;
+}
+
+.product .line-10-dmlpKf {
+  background-color: transparent;
+  height: 3px;
+  left: 23px;
+  position: absolute;
+  top: 60px;
+  width: 177px;
+}
+
+.product .x129-inch-i-pad-pro-5-dmlpKf {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxxs);
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  left: 28px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 86px;
+  width: 567px;
+}
+
+.product .seller_wrapper-xxEPoA {
+  background-color: transparent;
+  height: 183px;
+  left: 959px;
+  overflow: hidden;
+  position: absolute;
+  top: 799px;
+  width: 595px;
+}
+
+.product .name-1AncCR {
+  background-color: transparent;
+  height: auto;
+  left: 23px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 68px;
+  width: 253px;
+}
+
+.product .location-1AncCR {
+  background-color: transparent;
+  color: var(--black);
+  font-family: var(--font-family-poppins);
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  left: 150px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 71px;
+  width: auto;
+}
+
+.product .seller-1AncCR {
+  background-color: transparent;
+  height: auto;
+  left: 23px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  mix-blend-mode: normal;
+  position: absolute;
+  text-align: left;
+  top: 7px;
+  width: 200px;
+}
+
+.product .line-10-1AncCR {
+  background-color: transparent;
+  height: 3px;
+  left: 23px;
+  position: absolute;
+  top: 46px;
+  width: 88px;
+}
