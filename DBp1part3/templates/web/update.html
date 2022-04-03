@@ -10,8 +10,25 @@
 
 <body>
     <h1>post</h1>
-    <form method="post">
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}">
+        </div>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="title" value ={{post[2]}}>
+        <input type="file" name="file" class="form-control" autocomplete="off">
         <input type="text" name="description"  placeholder="description" value ={{post[3]}}>
         <input type="text" name="price"  placeholder="price" value ={{post[5]}}>
         <input type="text" name="category"  placeholder="category" value ={{post[6]}}>

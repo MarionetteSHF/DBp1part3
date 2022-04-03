@@ -1,8 +1,11 @@
+import os
+
 from DBp1part3 import sql
 
 
-rows =sql.fetchall('Items_Posted')
+rows =sql.fetchall('Photos')
 print(rows)
+print(os.getcwd())
 
 
 a = "12345"

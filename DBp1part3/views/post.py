@@ -63,6 +63,19 @@ def get_post(iid):
 
     return post
 
+app = Flask(__name__)
+UPLOAD_FOLDER = '/Users/zhenghuili/PycharmProjects/DBp1part3/DBp1part3/static/uploads/'
+
+app.secret_key = "secret key"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 
 @bp.route('/update/<int:iid>', methods=('GET', 'POST'))
 @auth
@@ -78,6 +91,10 @@ def update(iid):
         number = request.form['number']
         category = request.form['category']
         wantorsell = request.form['wantorsell']
+        file = request.files['file']
+
+
+
         error = None
 
         if not title:
@@ -100,15 +117,28 @@ def update(iid):
                 ' WHERE item_id = %s',
                 (title, price,wantorsell,number,category, iid)
             )
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                print('upload_image filename: ' + filename)
+
+                cur.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)",
+                               (iid, filename,))
+
+                flash('Image successfully uploaded and displayed below')
+                return render_template('web/update.html', filename=filename,post=post)
+            else:
+                flash('Allowed image types are - png, jpg, jpeg, gif')
             db.commit()
             db.close()
             return redirect(url_for('index'))
 
     return render_template('web/update.html', post=post)
 
-
-
-
+@app.route('/display/<filename>')
+def display_image(filename):
+    # print('display_image filename: ' + filename)
+    return redirect(url_for('static', filename='uploads/' + filename), code=301)
 @bp.route('/display/<int:id>')
 @auth
 def display(id):
@@ -180,57 +210,55 @@ def convertToBinaryData(filename):
         binaryData = file.read()
     return binaryData
 
-# def insertBLOB(iid, photo):
-#     db = sql.get_db()
-#     cur = db.cursor()
-#     sql_insert_blob_query = """ INSERT INTO Photos
-#     (photo_id, item_id, photo) VALUES (default,%s,%s)"""
-#
-#     picture = convertToBinaryData(photo)
-#     result = cur.execute(sql_insert_blob_query, (iid,picture))
-#     db.commit()
-#     db.close()
-#     print("Image inserted successfully as a BLOB into table", result)
-#
+
+def insertBLOB(iid, photo):
+     db = sql.get_db()
+     cur = db.cursor()
+     sql_insert_blob_query = """ INSERT INTO Photos
+     (photo_id, item_id, photo) VALUES (default,%s,%s)"""
+     picture = convertToBinaryData(photo)
+     result = cur.execute(sql_insert_blob_query, (iid,picture))
+     db.commit()
+     db.close()
+     print("Image inserted successfully as a BLOB into table", result)
+
+# app = Flask(__name__)
 # UPLOAD_FOLDER = 'static/uploads/'
 #
-# bp.secret_key = "secret key"
-# bp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-# bp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+# app.secret_key = "secret key"
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 #
 # ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-#
+# #
 #
 # def allowed_file(filename):
 #     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+#
+#
+# @app.route('/update/<int:iid>', methods=['POST'])
+# def upload_image():
+#     db = sql.get_db()
+#     cursor = db.cursor()
+#     # if 'file' not in request.files:
+#     #     flash('No file part')
+#     #     return redirect(request.url)
+#     file = request.files['file']
+#     print('upload_image filename: ' + filename)
+#     if file and allowed_file(file.filename):
+#         filename = secure_filename(file.filename)
+#         file.save(os.path.join(bp.config['UPLOAD_FOLDER'], filename))
+#         print('upload_image filename: ' + filename)
+#
+#         cursor.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)", (iid,filename,))
+#         db.commit()
+#
+#         flash('Image successfully uploaded and displayed below')
+#     else:
+#         flash('Allowed image types are - png, jpg, jpeg, gif')
+#         return render_template('web/post.html')
+#
 
 
-@bp.route('/', methods=['POST'])
-def upload_image():
-    db = sql.get_db()
-    cursor = db.cursor()
-    if 'file' not in request.files:
-        flash('No file part')
-        return redirect(request.url)
-    file = request.files['file']
-    if file.filename == '':
-        flash('No image selected for uploading')
-        return redirect(request.url)
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(bp.config['UPLOAD_FOLDER'], filename))
-        # print('upload_image filename: ' + filename)
 
-        cursor.execute("INSERT INTO upload (title) VALUES (%s)", (filename,))
-        db.commit()
 
-        flash('Image successfully uploaded and displayed below')
-        return render_template('index.html', filename=filename)
-    else:
-        flash('Allowed image types are - png, jpg, jpeg, gif')
-        return render_template('web/post.html')
-
-@bp.route('/display/<filename>')
-def display_image(filename):
-    #print('display_image filename: ' + filename)
-    return redirect(url_for('static', filename='uploads/' + filename), code=301)
