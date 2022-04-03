@@ -76,7 +76,7 @@ def register():
                 return redirect(url_for("index"))
         db.close()
         flash(error)
-    return render_template('auth/register_f.html')
+    return render_template('auth/register/sign-up.html')
 
 @auth.route('/logout')
 def logout():

@@ -104,12 +104,17 @@
 }
 
 .sign-in .loginbttn-5xOTHh {
-  background-color: transparent;
-  height: 104px;
-  left: 85px;
+  /*background-color: transparent;*/
+  /*height: 104px;*/
+  /*left: 85px;*/
+  /*!*position: absolute;*!*/
+  /*top: 1000px;*/
+  /*width: 768px;*/
+  height: 1001px;
+  left: 1044px;
   position: absolute;
-  top: 652px;
-  width: 768px;
+  top: 0;
+  width: 1187px;
 }
 
 .sign-in .rectangle-9-YBtbWr {

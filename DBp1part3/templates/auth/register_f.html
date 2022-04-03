@@ -33,17 +33,21 @@
         <div class="ellipse-2-P4dCxW border-4px-moonstone"></div>
         <img class="ellipse-3-P4dCxW" src="{{ url_for('static',filename='img/ellipse-3@2x.png') }}" />
       </div>
-      <form>
+      <form method="post">
       <input
         class="youremailcolumbiacom-5xOTHh"
-        name="youremailcolumbiacom"
+        name="username"
         placeholder="youremail@columbia.com"
         type="email"
         required
-      /><input class="password-5xOTHh" name="password" placeholder="Password" type="password" required />
+      /><input class="password-5xOTHh" name="pwd" placeholder="Password" type="password" required />
+         <input class="youremailcolumbiacom-5xOTHh" type="text" name="phone" placeholder="phone number">
+        <input class="youremailcolumbiacom-5xOTHh" type="text" name="email" placeholder="email">
         <div class="loginbttn-5xOTHh">
         <img class="rectangle-9-YBtbWr" src="{{ url_for('static',filename='img/rectangle-9@1x.png') }}" />
+
         <div class="sign-in-YBtbWr"> <a href="/index">Register</a></div>
+
       </div>
       </form>
 
