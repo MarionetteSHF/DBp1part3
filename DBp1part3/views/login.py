@@ -24,12 +24,12 @@ def login():
         # print(rows[0])
         if rows is None:
             error = 'No such email.'+str(rows)
-            return render_template('auth/login.html', error=error)
+            return render_template('static/sign-in/login.html', error=error)
 
 
         elif not check_password_hash(rows[0], password):
             error = 'Incorrect password.'
-            return render_template('auth/login.html', error=error)
+            return render_template('static/sign-in/login.html', error=error)
 
 
         session['email']=email
@@ -40,7 +40,7 @@ def login():
 
         # return render_template('auth/login.html', error=error)
     else:
-        return render_template('auth/login.html')
+        return render_template('auth/sign-in.html')
 
         # return jsonify('data':1000)
 
@@ -76,7 +76,7 @@ def register():
                 return redirect(url_for("index"))
         db.close()
         flash(error)
-    return render_template('auth/register.html')
+    return render_template('auth/register_f.html')
 
 @auth.route('/logout')
 def logout():

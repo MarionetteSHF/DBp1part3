@@ -180,29 +180,29 @@ def convertToBinaryData(filename):
         binaryData = file.read()
     return binaryData
 
-def insertBLOB(iid, photo):
-    db = sql.get_db()
-    cur = db.cursor()
-    sql_insert_blob_query = """ INSERT INTO Photos
-    (photo_id, item_id, photo) VALUES (default,%s,%s)"""
-
-    picture = convertToBinaryData(photo)
-    result = cur.execute(sql_insert_blob_query, (iid,picture))
-    db.commit()
-    db.close()
-    print("Image inserted successfully as a BLOB into table", result)
-
-UPLOAD_FOLDER = 'static/uploads/'
-
-bp.secret_key = "secret key"
-bp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-bp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+# def insertBLOB(iid, photo):
+#     db = sql.get_db()
+#     cur = db.cursor()
+#     sql_insert_blob_query = """ INSERT INTO Photos
+#     (photo_id, item_id, photo) VALUES (default,%s,%s)"""
+#
+#     picture = convertToBinaryData(photo)
+#     result = cur.execute(sql_insert_blob_query, (iid,picture))
+#     db.commit()
+#     db.close()
+#     print("Image inserted successfully as a BLOB into table", result)
+#
+# UPLOAD_FOLDER = 'static/uploads/'
+#
+# bp.secret_key = "secret key"
+# bp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# bp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+#
+# ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+#
+#
+# def allowed_file(filename):
+#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @bp.route('/', methods=['POST'])

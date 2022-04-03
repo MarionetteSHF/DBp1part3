@@ -3,6 +3,12 @@
 /* The following line is used to measure usage of this code in production. For more info see our usage billing page */
 @import url("https://px.animaapp.com/62311043ed89461a2ec071c2.62311045a4a3af838954fbb7.MUX3r6g.hcp.png");
 
+a{
+  text-decoration: none;
+  outline: none;
+  color: #000;
+}
+
 .screen textarea:focus,
 .screen input:focus {
   outline: none;
@@ -28,4 +34,5 @@ input:focus {
 
 * {
   box-sizing: border-box;
+
 }

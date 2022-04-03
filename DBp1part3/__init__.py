@@ -11,7 +11,7 @@ DATA_dict = {
 }
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static')
     app.secret_key='hanfushi'
 
     @app.route('/index')
