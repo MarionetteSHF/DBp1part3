@@ -15,6 +15,14 @@
 <!--        <a href="/display/{{x[1]}}">check the item</a>-->
 
       {% endfor %}
+      <table>
+          {% for item in file%}
+          <tr>
+            <td><img src="{{ url_for('static', filename='uploads/' + item[0]) }}" width="500" height="600">
+</td>
+          </tr>
+          {% endfor %}
+      </table>
       <a href="/register">register</a>
         <a href="/login">login</a>
 <a href="/index">main page</a>
