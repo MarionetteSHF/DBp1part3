@@ -30,4 +30,4 @@ def delete(nid):
 
     # return redirect('/index')
     return redirect('/index')#anotrher name of index
-    # return render_template('index.html', data_dict=DATA_dict)
+    # return render_template('index_old.html', data_dict=DATA_dict)
