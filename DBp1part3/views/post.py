@@ -1,11 +1,13 @@
-from flask import Flask, Blueprint,flash, g, redirect, render_template, request, url_for,session
+from flask import Flask, Blueprint,flash, redirect, render_template, request, url_for,session
 from werkzeug.exceptions import abort
 from .test2 import auth
 from DBp1part3 import sql
 import urllib.request
 import os
+import io
 from werkzeug.utils import secure_filename
 from datetime import datetime
+import base64
 
 bp = Blueprint('post', __name__)
 @bp.route('/create/<int:uid>', methods=('GET', 'POST'))
@@ -76,6 +78,12 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+def convertToBinaryData(filename):
+    # Convert digital data to binary format
+    with open(filename, 'rb') as file:
+        binaryData = file.read()
+    return binaryData
+
 
 @bp.route('/update/<int:iid>', methods=('GET', 'POST'))
 @auth
@@ -92,8 +100,6 @@ def update(iid):
         category = request.form['category']
         wantorsell = request.form['wantorsell']
         file = request.files['file']
-
-
 
         error = None
 
@@ -113,18 +119,22 @@ def update(iid):
             db = sql.get_db()
             cur = db.cursor()
             cur.execute(
-                'UPDATE Items_Posted SET title = %s, price = %s, neededItem = %s, number = %s, category = %s'
+                'UPDATE Items_Posted SET title = %s, price = %s, neededItem = %s, number = %s, category = %s,description=%s'
                 ' WHERE item_id = %s',
-                (title, price,wantorsell,number,category, iid)
+                (title, price,wantorsell,number,category, description,iid)
             )
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
                 print('upload_image filename: ' + filename)
 
-                cur.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)",
-                               (iid, filename,))
+                picture = convertToBinaryData(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+                cur.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)",
+                               (iid, picture,))
+                db.commit()
+                db.close()
                 flash('Image successfully uploaded and displayed below')
                 return render_template('web/update.html', filename=filename,post=post)
             else:
@@ -135,10 +145,23 @@ def update(iid):
 
     return render_template('web/update.html', post=post)
 
-@app.route('/display/<filename>')
-def display_image(filename):
-    # print('display_image filename: ' + filename)
-    return redirect(url_for('static', filename='uploads/' + filename), code=301)
+# @app.route('/display/<filename>')
+# # def display_image(filename):
+# #     # print('display_image filename: ' + filename)
+# #     return redirect(url_for('static', filename='uploads/' + filename), code=301)
+# def display_image():
+#     db = sql.get_db()
+#     cur = db.cursor()
+#     sql1='select image_source from Photos WHERE item_id=iid'
+#     cur.execute(sql1)
+#     data=cur.fetchall()
+#     file_like=io.BytesIO(data[0][0])
+#     imgdata = base64.b64decode(file_like).decode('utf-8')
+#     db.close()
+#     return render_template("home.html",data=imgdata)
+
+
+
 @bp.route('/display/<int:id>')
 @auth
 def display(id):
@@ -150,9 +173,14 @@ def display(id):
         (id,),
     )
     rows = cur.fetchone()
+    cur.execute("select image_source from Photos WHERE item_id=%s",(id,),)
+    data = cur.fetchall()
+    print(data)
+    file_like = io.BytesIO(data[0][0])
+    imgdata = base64.b64decode(file_like).decode('utf-8')
     db.close()
     print(rows)
-    return render_template('web/display.html', row = rows)
+    return render_template('web/display.html', row = rows,data=imgdata)
     # redirect()
 
 @bp.route('/profile/<int:id>')
@@ -184,8 +212,7 @@ def delete(id):
     cur.execute('DELETE FROM Items_Posted WHERE item_id = %', (id,))
     db.commit()
     db.close()
-    return redirect(url_for('index'))
-    return render_template('web/profile.html', row=rows)
+    return render_template('web/profile.html')
 
 @bp.route('/addtowish/<int:iid>')
 def add_to_wishlist(iid):
@@ -202,63 +229,6 @@ def add_to_wishlist(iid):
     # print(rows)
     # flash("success")
     return redirect("/profile/"+str(session['user_id']))
-
-
-def convertToBinaryData(filename):
-    # Convert digital data to binary format
-    with open(filename, 'rb') as file:
-        binaryData = file.read()
-    return binaryData
-
-
-def insertBLOB(iid, photo):
-     db = sql.get_db()
-     cur = db.cursor()
-     sql_insert_blob_query = """ INSERT INTO Photos
-     (photo_id, item_id, photo) VALUES (default,%s,%s)"""
-     picture = convertToBinaryData(photo)
-     result = cur.execute(sql_insert_blob_query, (iid,picture))
-     db.commit()
-     db.close()
-     print("Image inserted successfully as a BLOB into table", result)
-
-# app = Flask(__name__)
-# UPLOAD_FOLDER = 'static/uploads/'
-#
-# app.secret_key = "secret key"
-# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-# app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-#
-# ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-# #
-#
-# def allowed_file(filename):
-#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-#
-#
-# @app.route('/update/<int:iid>', methods=['POST'])
-# def upload_image():
-#     db = sql.get_db()
-#     cursor = db.cursor()
-#     # if 'file' not in request.files:
-#     #     flash('No file part')
-#     #     return redirect(request.url)
-#     file = request.files['file']
-#     print('upload_image filename: ' + filename)
-#     if file and allowed_file(file.filename):
-#         filename = secure_filename(file.filename)
-#         file.save(os.path.join(bp.config['UPLOAD_FOLDER'], filename))
-#         print('upload_image filename: ' + filename)
-#
-#         cursor.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)", (iid,filename,))
-#         db.commit()
-#
-#         flash('Image successfully uploaded and displayed below')
-#     else:
-#         flash('Allowed image types are - png, jpg, jpeg, gif')
-#         return render_template('web/post.html')
-#
-
 
 
 
