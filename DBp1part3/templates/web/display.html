@@ -16,9 +16,10 @@
 
       {% endfor %}
       <table>
-          {% for item in data %}
+          {% for item in file%}
           <tr>
-            <td>{{item[0]}}</td>
+            <td><img src="{{ url_for('static', filename='uploads/' + item[0]) }}" width="500" height="600">
+</td>
           </tr>
           {% endfor %}
       </table>

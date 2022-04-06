@@ -4,10 +4,12 @@ from .test2 import auth
 from DBp1part3 import sql
 import urllib.request
 import os
-import io
+from io import BytesIO
+import base64
+
 from werkzeug.utils import secure_filename
 from datetime import datetime
-import base64
+
 
 bp = Blueprint('post', __name__)
 @bp.route('/create/<int:uid>', methods=('GET', 'POST'))
@@ -64,6 +66,20 @@ def get_post(iid):
         abort(404, f"Post id {iid} doesn't exist.")
 
     return post
+
+# def get_pic(iid):
+#     db = sql.get_db()
+#     cur = db.cursor()
+#     cur.execute(
+#         'SELECT image_source'
+#         ' FROM Photos '
+#         ' WHERE item_id = %s',
+#         (iid,)
+#     )
+#     pic = cur.fetchone()
+#     db.close()
+#     pic = BytesIO(pic)
+#     return pic
 
 app = Flask(__name__)
 UPLOAD_FOLDER = '/Users/zhenghuili/PycharmProjects/DBp1part3/DBp1part3/static/uploads/'
@@ -125,6 +141,7 @@ def update(iid):
             )
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
+
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
                 print('upload_image filename: ' + filename)
@@ -132,7 +149,7 @@ def update(iid):
                 picture = convertToBinaryData(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
                 cur.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)",
-                               (iid, picture,))
+                               (iid, filename,))
                 db.commit()
                 db.close()
                 flash('Image successfully uploaded and displayed below')
@@ -145,20 +162,10 @@ def update(iid):
 
     return render_template('web/update.html', post=post)
 
-# @app.route('/display/<filename>')
-# # def display_image(filename):
-# #     # print('display_image filename: ' + filename)
-# #     return redirect(url_for('static', filename='uploads/' + filename), code=301)
-# def display_image():
-#     db = sql.get_db()
-#     cur = db.cursor()
-#     sql1='select image_source from Photos WHERE item_id=iid'
-#     cur.execute(sql1)
-#     data=cur.fetchall()
-#     file_like=io.BytesIO(data[0][0])
-#     imgdata = base64.b64decode(file_like).decode('utf-8')
-#     db.close()
-#     return render_template("home.html",data=imgdata)
+@app.route('/display/<filename>')
+def display_image(filename):
+    # print('display_image filename: ' + filename)
+    return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
 
 
@@ -173,14 +180,13 @@ def display(id):
         (id,),
     )
     rows = cur.fetchone()
-    cur.execute("select image_source from Photos WHERE item_id=%s",(id,),)
-    data = cur.fetchall()
-    print(data)
-    file_like = io.BytesIO(data[0][0])
-    imgdata = base64.b64decode(file_like).decode('utf-8')
+    cur.execute(
+        "SELECT image_source FROM Photos WHERE item_id = %s",
+        (id,),
+    )
+    file = cur.fetchall()
     db.close()
-    print(rows)
-    return render_template('web/display.html', row = rows,data=imgdata)
+    return render_template('web/display.html', row = rows, file=file)
     # redirect()
 
 @bp.route('/profile/<int:id>')
