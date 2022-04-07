@@ -47,36 +47,81 @@ def login():
 
 @auth.route('/register', methods=('GET', 'POST'))
 def register():
+
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['pwd']
-        email = request.form['email']
-        phone = request.form['phone']
-        print(username +password+email+phone)
-        db = sql.get_db()
-        error = None
+        if "phone" in request.form:
+            username = request.form['username']
+            password = request.form['pwd']
+            email = request.form['email']
+            phone = request.form['phone']
+            copy_pwd = request.form['copy_pwd']
+            print(username +password+email+phone)
+            db = sql.get_db()
+            error = None
 
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
+            if copy_pwd != password:
+                error = 'please input same passwords'
 
-        if error is None:
-            try:
-                cur = db.cursor()
 
-                cur.execute(
-                    "INSERT INTO Users (user_id, name, email, phone, encrypted_password  ) VALUES (default, %s, %s, %s, %s)",
-                    (username,email,phone,generate_password_hash(password)),
-                )
-                db.commit()
-            except db.IntegrityError:
-                error = f"User {username} is already registered."
-            else:
-                return redirect(url_for("index"))
-        db.close()
-        flash(error)
-    return render_template('auth/register/sign-up.html')
+            if error is None:
+                try:
+                    cur = db.cursor()
+
+                    cur.execute(
+                        "INSERT INTO Users (user_id, name, email, phone, encrypted_password  ) VALUES (default, %s, %s, %s, %s)",
+                        (username,email,phone,generate_password_hash(password)),
+                    )
+                    db.commit()
+                except db.IntegrityError:
+                    error = f"User {email} is already registered."
+                else:
+                    # flash(error)
+                    # return render_template('auth/register/auth.html', error =error)
+                    return redirect(url_for("index"))
+            print(error)
+            db.close()
+            flash(error)
+
+            return render_template('auth/register/auth.html', error=error)
+        else:
+            email = request.form['email']
+            password = request.form['pwd']
+
+            db = sql.get_db()
+            cur = db.cursor()
+            cur.execute(
+                "SELECT encrypted_password,user_id  FROM Users WHERE email = %s",
+                (email,),
+            )
+            rows = cur.fetchone()
+            db.close()
+            print(rows)
+            error = None
+            # print(rows[0])
+            if rows is None:
+                error = 'No such email'
+                return render_template('auth/register/auth.html', error=error)
+
+
+            elif not check_password_hash(rows[0], password):
+                error = 'Incorrect password.'
+                return render_template('auth/register/auth.html', error=error)
+
+            session['email'] = email
+            session['user_id'] = rows[1]
+            print(session['user_id'])
+            print(session['email'])
+            return redirect('index')
+
+
+
+
+
+
+
+
+    return render_template('auth/register/auth.html')
+    # return render_template('webpage/index_old.html')
 
 @auth.route('/logout')
 def logout():

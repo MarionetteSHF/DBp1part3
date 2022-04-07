@@ -18,6 +18,7 @@ def create_app():
     def index():
         rows = sql.fetchall('Items_Posted')
         return render_template('webpage/index.html', rows=rows)
+        # return render_template('index_old.html', rows=rows)
 
     app.register_blueprint(auth)
     app.register_blueprint(testblue2)
