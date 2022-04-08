@@ -203,7 +203,7 @@ def profile(id):
 
     return render_template('webpage/profile.html', rows=rows,id=id,wishRows=wishRows)
 
-@bp.route('/delete/<int:iid>')
+@bp.route('/itemDelete/<int:iid>')
 @auth
 def itemDelete(iid):
     db = sql.get_db()
@@ -211,9 +211,9 @@ def itemDelete(iid):
     cur.execute('DELETE FROM Items_Posted WHERE item_id = %s', (iid,))
     db.commit()
     db.close()
-    return render_template('web/profile.html')
+    return render_template('webpage/profile.html')
 
-@bp.route('/wishlistDelete/<int:lid>')
+@bp.route('/wishDelete/<int:lid>')
 @auth
 def wishDelete(lid):
     db = sql.get_db()
@@ -221,7 +221,7 @@ def wishDelete(lid):
     cur.execute('DELETE FROM Whishlists_Create_add WHERE list_id = %s', (lid,))
     db.commit()
     db.close()
-    return render_template('web/profile.html')
+    return render_template('webpage/profile.html')
 
 @bp.route('/addtowish/<int:iid>')
 def add_to_wishlist(iid):
