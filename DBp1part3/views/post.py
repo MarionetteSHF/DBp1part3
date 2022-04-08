@@ -20,20 +20,14 @@ def create(uid):
         price = float(request.form['price'])
         number = int(request.form['number'])
         category = request.form['category']
-        wantorsell = bool(request.form['wantorsell'])
+        wantorsell = True if request.form['wantorsell'] == 'need' else False
+        # wantorsell = bool(request.form['wantorsell'])
         description = request.form['description']
         error = None
 
-        if not title:
-            error = 'Title is required.'
-        if not price:
-            error = 'Price is required.'
-        if not wantorsell:
-            error = 'Want it or need it?'
-        if not number:
-            error = 'Number is required.'
-        if not category:
-            error = 'Category is required.'
+        print(category  )
+        print(wantorsell)
+
         if error is not None:
             flash(error)
         else:
