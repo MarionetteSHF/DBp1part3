@@ -14,7 +14,7 @@
 
   <title> CIRCULATION </title>
 
-  <!-- bootstrap core css -->{{ url_for('static',filename='veg/css/style.css') }}
+  <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='veg/css/bootstrap.css') }}" />
   <!-- font awesome style -->
   <link href="{{ url_for('static',filename='veg/css/font-awesome.min.css') }}" rel="stylesheet" />
@@ -29,7 +29,7 @@
 <body>
   <div class="hero_area">
     <div class="hero_bg_box">
-      <img src="images/index.png" alt="">{{ url_for('static',filename='veg/css/style.css') }}
+      <img src="{{ url_for('static', filename='veg/images/index.png')}}" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -538,10 +538,9 @@
     </div>
   </section> -->
   <!-- end  footer section -->
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/custom.js"></script>
+  <script type="text/javascript" src="templates/webpage/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="templates/webpage/js/bootstrap.js"></script>
+  <script type="text/javascript" src="templates/webpage/js/custom.js"></script>
   <!-- Google Map -->
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
