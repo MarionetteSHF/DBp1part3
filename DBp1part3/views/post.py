@@ -48,7 +48,7 @@ def create(uid):
             db.commit()
             db.close()
             return redirect(url_for('index'))
-    return render_template('web/post.html')
+    return render_template('webpage/post.html')
 
 def get_post(iid):
     db = sql.get_db()
