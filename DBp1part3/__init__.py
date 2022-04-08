@@ -1,4 +1,6 @@
 from flask import Flask,render_template
+
+from .views.category import ind
 from .views.login import auth
 from DBp1part3.views.test2 import testblue2
 from . import sql
@@ -23,6 +25,7 @@ def create_app():
     app.register_blueprint(auth)
     app.register_blueprint(testblue2)
     app.register_blueprint(post.bp)
+    app.register_blueprint(ind)
     app.add_url_rule('/', endpoint='index')
     # app.register_blueprint(testblue, url_prefix ='/web')
     # app.register_blueprint(testblue2, url_prefix ='/admin')
