@@ -36,7 +36,7 @@
         <header class="header_section">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="/index">
                         <span>
                             CIRCULATION
                         </span>
@@ -192,7 +192,7 @@
     </style>
     <section class="wishlist">
         <div>
-            <p class="wish">Your wishlist</p>
+            <p class="wish">My wishlist</p>
             <table class="wish">
 
                 <colgroup>
@@ -201,24 +201,24 @@
                 </colgroup>
                 <tr>
                     <th>Item</th>
-                    <th>Date</th>
                     <th>Price</th>
                     <th>Seller</th>
                     <th>Phone</th>
+                    <th>Delete</th>
                 </tr>
+                {% for wish in wishRows %}
                 <tr>
-                    <td>iphone</td>
-                    <td>11/2/2018</td>
-                    <td>25</td>
-                    <td>wo</td>
-                    <td>646232252</td>
-                    <td><a href="">delete</a></td>
+                    <td>{{wish[0]}}</td>
+                    <td>{{wish[1]}}</td>
+                    <td>{{wish[2]}}</td>
+                    <td>{{wish[3]}}</td>
+                    <td><a href="/wishDelete/{{wish[4]}}">delete</a></td>
                 </tr>
-
+                {%endfor%}
             </table>
         </div>
         <div>
-            <p class="posted">Your Posted tems</p>
+            <p class="posted">My Posted items</p>
             <table class="posted">
 
                 <colgroup>
@@ -227,21 +227,27 @@
                 </colgroup>
                 <tr>
                     <th>Item</th>
-
                     <th>Price</th>
+                    <th>Sell/Need</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
+                {% for item in rows %}
                 <tr>
-                    <td>iphone</td>
 
-                    <td>25</td>
-                    <td><a href="">Edit</a></td>
-
-                    <td><a href="">delete</a></td>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    {% if item[2]%}
+                    <td> Need </td>
+                    {% else %}
+                    <td> Sell </td>
+                    {% endif %}
+                    <td><a href="/update/{{item[3]}}">Edit</a></td>
+                    <td><a href="/itemDelete/{{item[3]}}">Delete</a></td>
                 </tr>
-
+                {% endfor %}
             </table>
+
         </div>
     </section>
 

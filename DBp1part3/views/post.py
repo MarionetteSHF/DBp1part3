@@ -190,26 +190,35 @@ def profile(id):
     print(id)
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM Items_Posted WHERE User_id = %s",
+        "SELECT title,price,neededItem,item_id FROM Items_Posted WHERE User_id = %s",
         (id,),
     )
     rows = cur.fetchall()
     cur.execute(
-        "SELECT * FROM Whishlists_Create_add WHERE User_id = %s",
+        "SELECT i.title,i.price, u.name,u.phone,w.list_id FROM Whishlists_Create_add w, Items_Posted i, Users u WHERE w.item_id=i.item_id and i.User_id=u.User_id and w.User_id = %s",
         (id,),
     )
     wishRows = cur.fetchall()
     db.close()
-    print(rows)
+
     return render_template('webpage/profile.html', rows=rows,id=id,wishRows=wishRows)
 
-@bp.route('/delete/<int:id>')
+@bp.route('/delete/<int:iid>')
 @auth
-def delete(id):
-    get_post(id)
+def itemDelete(iid):
     db = sql.get_db()
     cur = db.cursor()
-    cur.execute('DELETE FROM Items_Posted WHERE item_id = %', (id,))
+    cur.execute('DELETE FROM Items_Posted WHERE item_id = %s', (iid,))
+    db.commit()
+    db.close()
+    return render_template('web/profile.html')
+
+@bp.route('/wishlistDelete/<int:lid>')
+@auth
+def wishDelete(lid):
+    db = sql.get_db()
+    cur = db.cursor()
+    cur.execute('DELETE FROM Whishlists_Create_add WHERE list_id = %s', (lid,))
     db.commit()
     db.close()
     return render_template('web/profile.html')
