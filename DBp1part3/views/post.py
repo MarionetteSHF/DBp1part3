@@ -207,7 +207,7 @@ def profile(id):
     wishRows = cur.fetchall()
     db.close()
     print(rows)
-    return render_template('web/profile.html', rows=rows,id=id,wishRows=wishRows)
+    return render_template('webpage/profile.html', rows=rows,id=id,wishRows=wishRows)
 
 @bp.route('/delete/<int:id>')
 @auth

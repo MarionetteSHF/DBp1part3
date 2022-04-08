@@ -46,7 +46,7 @@
                 <ul class="navbar-nav justify-content-between ">
                   <div class="User_option">
                     <li class="">
-                      <a class="" href="">
+                      <a class="" href="/profile/{{session['user_id']}}">
                         <i class="fa fa-user" aria-hidden="true"></i>
                       </a>
                     </li>
@@ -69,10 +69,11 @@
             </div>
             <div id="myNav" class="overlay">
               <div class="overlay-content">
-                <a href="index.html">HOME</a>
-                <a href="about.html">ABOUT</a>
-                <a href="vegetables.html">Log in</a>
-                <a href="contact.html">Register</a>
+                <a href="/index">HOME</a>
+                <!-- <a href="about.html">ABOUT</a> -->
+                <!-- <a href="vegetables.html">Log in</a> -->
+                <a href="/register">Register/Log in</a>
+                <a href="about.html">Post</a>
               </div>
               <div class="overlay-content2">
                 <a href="/furniture">Furniture</a>
@@ -320,7 +321,7 @@
 
   <section class="about_section ">
     <div class="about_bg_box">
-      <img src="images/school.png" alt="">
+      <img src="static/veg/images/school.png" alt="">
     </div>
     <div class="container ">
       <div class="row">
