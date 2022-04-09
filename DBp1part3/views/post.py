@@ -4,7 +4,7 @@ from .test2 import auth
 from DBp1part3 import sql
 import urllib.request
 import os
-from io import BytesIO
+from io import BytesIO,StringIO
 import base64
 
 from werkzeug.utils import secure_filename
@@ -237,7 +237,7 @@ def add_to_wishlist(iid):
     db.close()
     # print(rows)
     # flash("success")
-    return redirect("/profile/"+str(session['user_id']))
+    return render_template('webpage/profile.html')
 
 
 
