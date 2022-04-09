@@ -186,13 +186,10 @@ def display(id):
         "SELECT image_source FROM Photos WHERE item_id = %s",
         (id,),
     )
-    file = cur.fetchall()
-    picFile = []
-    for f in file:
-        img = Image.open(BytesIO(f))
-        picFile.append(img)
-    db.close()
-    return render_template('web/display.html', row = rows, file=picFile)
+    file = cur.fetchone()
+    img = Image.open(BytesIO(file))
+
+    return render_template('web/display.html', row = rows, file=img)
 
 # @bp.route('/display/<int:id>')
 # @auth
