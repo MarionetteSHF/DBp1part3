@@ -7,6 +7,9 @@ import os
 from io import BytesIO,StringIO
 import base64
 
+import psycopg2
+from PIL import Image
+
 from werkzeug.utils import secure_filename
 from datetime import datetime
 
@@ -134,24 +137,32 @@ def update(iid):
                 (title, price,wantorsell,number,category, description,iid)
             )
             if file and allowed_file(file.filename):
+            #     filename = secure_filename(file.filename)
+            #
+            #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #
+            #     print('upload_image filename: ' + filename)
+            #
+            #     picture = convertToBinaryData(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #
+            #     cur.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)",
+            #                    (iid, filename,))
+            #     db.commit()
+            #     db.close()
+            #     flash('Image successfully uploaded and displayed below')
+            #     return render_template('web/update.html', filename=filename,post=post)
+            # else:
+            #     flash('Allowed image types are - png, jpg, jpeg, gif')
                 filename = secure_filename(file.filename)
+                with open(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'rb') as reader:
+                    img_buffer = reader.read()
+                command = "INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)"  # create table cataract
+                params = (iid, psycopg2.Binary(img_buffer))
+                cur.execute(command, params)
 
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-                print('upload_image filename: ' + filename)
-
-                picture = convertToBinaryData(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-                cur.execute("INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)",
-                               (iid, filename,))
                 db.commit()
                 db.close()
-                flash('Image successfully uploaded and displayed below')
-                return render_template('web/update.html', filename=filename,post=post)
-            else:
-                flash('Allowed image types are - png, jpg, jpeg, gif')
-            db.commit()
-            db.close()
             return redirect(url_for('index'))
 
     return render_template('web/update.html', post=post)
@@ -161,10 +172,46 @@ def display_image(filename):
     # print('display_image filename: ' + filename)
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
-
-
 @bp.route('/display/<int:id>')
 @auth
+def display(id):
+    db = sql.get_db()
+    cur = db.cursor()
+    cur.execute(
+        "SELECT *  FROM Items_Posted WHERE item_id = %s",
+        (id,),
+    )
+    rows = cur.fetchone()
+    cur.execute(
+        "SELECT image_source FROM Photos WHERE item_id = %s",
+        (id,),
+    )
+    file = cur.fetchall()
+    picFile = []
+    for f in file:
+        img = Image.open(BytesIO(f))
+        picFile.append(img)
+    db.close()
+    return render_template('web/display.html', row = rows, file=picFile)
+
+# @bp.route('/display/<int:id>')
+# @auth
+# def display(id):
+#     db = sql.get_db()
+#     print(id)
+#     cur = db.cursor()
+#     cur.execute(
+#         "SELECT *  FROM Items_Posted WHERE item_id = %s",
+#         (id,),
+#     )
+#     rows = cur.fetchone()
+#     cur.execute(
+#         "SELECT image_source FROM Photos WHERE item_id = %s",
+#         (id,),
+#     )
+#     file = cur.fetchall()
+#     db.close()
+#     return render_template('web/display.html', row = rows, file=file)
 def display(id):
     db = sql.get_db()
     print(id)
@@ -181,7 +228,8 @@ def display(id):
     file = cur.fetchall()
     db.close()
     return render_template('web/display.html', row = rows, file=file)
-    # redirect()
+
+
 
 @bp.route('/profile/<int:id>')
 @auth
