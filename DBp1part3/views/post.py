@@ -5,7 +5,7 @@ from DBp1part3 import sql
 import urllib.request
 from io import BytesIO,StringIO
 import base64
-from PIL import Image
+# from PIL import Image
 
 from datetime import datetime
 
