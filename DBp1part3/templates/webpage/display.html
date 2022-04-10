@@ -257,7 +257,7 @@
                                 phone:
                             </p>
                             <div>
-                                <a href="/addtowish">
+                                <a href="/addtowish/{{row[4]}}">
                                     Add to wish list
                                 </a>
                             </div>
@@ -302,9 +302,11 @@
                             <section class="poting">
                                 <section class="frstC">
 
+                                    {% for comm in comms %}
 
-                                    <div class="fo-example">user1：this is what I want !</div>
 
+                                    <div class="fo-example">{{comm[0]}}：{{comm[1]}}</div>
+                                    {% endfor %}
                                 </section>
                             </section>
 

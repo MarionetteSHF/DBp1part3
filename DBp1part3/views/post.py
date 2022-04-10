@@ -127,23 +127,38 @@ def update(iid):
     return render_template('web/update.html', post=post,file=image_file)
 
 
-@bp.route('/display/<int:id>')
+@bp.route('/display/<int:iid>',methods=('GET', 'POST'))
 @auth
-def display(id):
+def display(iid):
     db = sql.get_db()
     cur = db.cursor()
     cur.execute(
         "SELECT *  FROM Items_Posted WHERE item_id = %s",
-        (id,),
+        (iid,),
     )
-    rows = cur.fetchone()
+    row = cur.fetchone()
     cur.execute(
         "SELECT image_source FROM Photos WHERE item_id = %s",
-        (id,),
+        (iid,),
     )
     img_stream_file = cur.fetchall()
-    print(img_stream_file)
-    return render_template('webpage/display.html', row = rows, file=img_stream_file)
+    cur.execute(
+        "SELECT u.name, c.comment_content  FROM Comments c,Users u WHERE c.user_id=u.user_id and item_id = %s",
+        (iid,),
+    )
+    comms = cur.fetchall()
+    if request.method == 'POST':
+        comment_content = request.form['comment']
+        comment_date = datetime.now().strftime("%m/%d/%Y")
+        cur.execute(
+            'INSERT INTO Comments (user_id, comment_id, item_id, comment_date, comment_content)'
+            'VALUES (%s,default, %s, %s, %s)',
+            (session["user_id"], iid, comment_date, comment_content)
+        )
+        db.commit()
+        db.close()
+        return redirect(url_for('post.display', iid=iid))
+    return render_template('webpage/display.html', row = row, file=img_stream_file,comms=comms)
 
 
 @bp.route('/profile/<int:id>')
@@ -169,10 +184,12 @@ def profile(id):
 def imageDelete(pid):
     db = sql.get_db()
     cur = db.cursor()
+    cur.execute('SELECT item_id FROM Photos WHERE photo_id = %s', (pid,))
+    iid=cur.fetchone()
     cur.execute('DELETE FROM Photos WHERE photo_id = %s', (pid,))
     db.commit()
     db.close()
-    return redirect('/update')
+    return redirect(url_for('post.update'),iid=iid)
 
 @bp.route('/itemDelete/<int:iid>')
 def itemDelete(iid):
@@ -181,7 +198,7 @@ def itemDelete(iid):
     cur.execute('DELETE FROM Items_Posted WHERE item_id = %s', (iid,))
     db.commit()
     db.close()
-    return render_template('webpage/profile.html')
+    return redirect(url_for('post.profile', id=session["user_id"]))
 
 @bp.route('/wishDelete/<int:lid>')
 def wishDelete(lid):
@@ -190,23 +207,19 @@ def wishDelete(lid):
     cur.execute('DELETE FROM Whishlists_Create_add WHERE list_id = %s', (lid,))
     db.commit()
     db.close()
-    return render_template('webpage/profile.html')
+    return redirect(url_for('post.profile', id=session["user_id"]))
 
 @bp.route('/addtowish/<int:iid>')
 def add_to_wishlist(iid):
     db = sql.get_db()
-    print(iid)
     cur = db.cursor()
     cur.execute(
         "INSERT INTO Whishlists_Create_add (list_id, user_id, item_id  ) VALUES (default, %s, %s)",
         (session['user_id'], iid),
     )
     db.commit()
-    # rows = cur.fetchone()
     db.close()
-    # print(rows)
-    # flash("success")
-    return render_template('webpage/profile.html')
+    return redirect(url_for('post.display', iid=iid))
 
 
 

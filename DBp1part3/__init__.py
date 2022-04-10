@@ -1,5 +1,4 @@
 from flask import Flask,render_template
-from .views.comment import comm
 from .views.category import ind
 from .views.login import auth
 from DBp1part3.views.test2 import testblue2
@@ -24,7 +23,6 @@ def create_app():
 
 
     app.register_blueprint(auth)
-    app.register_blueprint(comm)
     app.register_blueprint(testblue2)
     app.register_blueprint(post.bp)
     app.register_blueprint(ind)
