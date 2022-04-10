@@ -6,10 +6,7 @@ from . import sql
 from .views import post
 
 
-DATA_dict = {
-    '1':{'name': 'hanfu', 'age':25},
-    '2':{'name': 'hanfu', 'age':52}
-}
+
 
 def create_app():
     app = Flask(__name__, static_folder='static')
@@ -24,7 +21,7 @@ def create_app():
             "SELECT i.title, i.price,i.neededitem,i.item_id,p.image_source FROM Items_Posted i, Photos p WHERE i.item_id = p.item_id ORDER BY i.posted_at DESC"
         )
         rows = cur.fetchall()
-        print(rows[0])
+        # print(rows[0])
         return render_template('webpage/index.html', rows=rows)
 
 

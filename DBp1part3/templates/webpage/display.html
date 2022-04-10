@@ -239,16 +239,14 @@
                     <div class="col-md-5 offset-md-2">
                         <div class="about_detail-box">
                             <h3 class="custom_heading ">
-                                About the item
+                                About the {{row[2]}} (${{row[5]}})
                             </h3>
-                            <section>
+                            <!-- <section>
                                 <div class="col-md-6 col-lg-4">
                                     <div class="box" id="box">
 
                                         <div class="detail-box">
-                                            <a id="detaila" class="detaila" href="">
-                                                Item:{{row[2]}}
-                                            </a>
+
                                             <div class="price_box">
                                                 <h6 class="price_heading">
                                                     <span>$</span> {{row[5]}}
@@ -261,7 +259,7 @@
                                             </div>
                                             <div class="price_box">
                                                 <h6 class="price_heading">
-                                                    Posted at:{{row[0]}}
+                                                    Owner:{{row[9]}} Posted at:{{row[0]}}
                                                 </h6>
                                             </div>
                                             <div class="price_box">
@@ -277,24 +275,22 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </section> -->
 
-                            <p>owner:{{row[9]}}</p>
-                            <p>email:{{row[10]}}</p>
-                            <p>phone:{{row[11]}}</p>
+                            <p> Owner: {{row[9]}} Posted at: {{row[0]}}</p>
+                            <p>Need or Sell:{{"Sale" if row[8] else "Need"}}</p>
                             <p class="">
-                            <p>Title:</p>{{row[2]}}
-                            <p>Price:</p>{{row[5]}}
-                            <p>Description:</p>{{row[3]}}
-                            <p>Category:</p>{{row[6]}}
-                            <p>Number:</p>{{row[7]}}
-                            <p>Need or Sell:</p>{{row[8]}}
+
+                            <p>Description:{{row[3]}}</p>
+                            <!-- <p>Category:</p>{{row[6]}} -->
+                            <!-- <p>Number: {{row[7]}}</p> -->
+                            <p>Number: {{row[7]}} Need or Sell:{{ " need" if row[8] else " sell"}}</p>
                             </p>
                             <p>
-                                email:
+                                Email:{{row[10]}}
                             </p>
                             <p>
-                                phone:
+                                Phone: {{ row[11] if row[11] else "No phone number"}}
                             </p>
                             <div>
                                 <a href="/addtowish/{{row[4]}}">
@@ -304,13 +300,13 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="text-align-last: center; font-size: 2em; font-weight:500;">
-                            <div>IMAGE</div>
-                        </div>
+                        <!-- <div class="about_img-box" style="text-align-last: center; font-size: 2em; font-weight:500;">
+                            <div>{{row[2]}}{{row[5]}}</div>
+                        </div> -->
                         <div class="about_img-box">
                             {% for f in file%}
                             <tr>
-                                <td><img style="width:180px" src="data:;base64,{{ f[0] }}"></td>
+                                <td><img style="" src="data:;base64,{{ f[0] }}"></td>
                             </tr>
                             {% endfor %}
                         </div>

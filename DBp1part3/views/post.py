@@ -122,7 +122,7 @@ def update(iid):
             else:
                 flash('Allowed image types are - png, jpg, jpeg, gif')
 
-    return render_template('web/update.html', post=post,file=image_file)
+    return render_template('webpage/update.html', post=post,file=image_file)
 
 
 @bp.route('/display/<int:iid>',methods=('GET', 'POST'))
