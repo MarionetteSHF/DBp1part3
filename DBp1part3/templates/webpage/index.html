@@ -246,17 +246,17 @@
               {% endif %}
             </div>
             <div class="detail-box">
-              <a id="detaila" class="detaila" href="/display/{{x[3]}}">
-                {{x[0]}}
+              <a id="detaila" class="detaila" href="/display/{{x[0]}}">
+                {{x[1]}}
               </a>
               <div class="price_box">
                 <h6 class="price_heading">
-                  <span>$</span> {{x[1]}}
+                  <span>$</span> {{x[2]}}
                 </h6>
               </div>
               <div class="price_box">
                 <h6 class="price_heading">
-                  {{"Sale" if x[2] else "Need"}}
+                  {{"Sale" if x[3] else "Need"}}
                 </h6>
               </div>
             </div>
