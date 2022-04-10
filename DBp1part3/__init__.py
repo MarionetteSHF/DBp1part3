@@ -17,7 +17,7 @@ def create_app():
         db = sql.get_db()
         cur = db.cursor()
         cur.execute(
-            "SELECT i.title, i.price,i.neededitem,i.item_id,p.image_source FROM Items_Posted i LEFT JOIN Photos p ON i.item_id = p.item_id ORDER BY i.posted_at DESC"
+            "SELECT DISTINCT i.item_id, i.title, i.price,i.neededitem,p.image_source FROM Items_Posted i LEFT JOIN Photos p ON i.item_id = p.item_id ORDER BY i.posted_at DESC"
         )
         rows = cur.fetchall()
         return render_template('webpage/index.html', rows=rows)
