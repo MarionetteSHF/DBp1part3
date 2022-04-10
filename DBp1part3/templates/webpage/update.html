@@ -188,11 +188,21 @@
             margin: 1em 1em 1em 1%
         }
     </style>
-    <form action="" method="post" class="posting">
+
+    {% if file %}
+        {% for img_info in file%}
+        <div>
+            <img style="width:180px" src="data:;base64,{{ img_info[1] }}">
+            <td><a href="/imageDelete/{{img_info[0]}}">delete</a></td>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post" class="posting" enctype="multipart/form-data">
 
         <section class="firstC">
             <div class="form-example">
-                <label class="inputlabel" for="name">Title </label>
+                <label class="inputlabel" >Title </label>
                 <input class="postinput" type="text" name="title" required value="{{post[2]}}">
             </div>
             <div class="form-example">

@@ -83,7 +83,7 @@ def update(iid):
         price = request.form['price']
         number = request.form['number']
         category = request.form['category']
-        wantorsell = request.form['wantorsell']
+        wantorsell = True if request.form['wantorsell'] == 'need' else False
         file = request.files['file']
 
         error = None
@@ -121,6 +121,7 @@ def update(iid):
 
             else:
                 flash('Allowed image types are - png, jpg, jpeg, gif')
+        return redirect(url_for('post.update',iid=iid))
 
     return render_template('webpage/update.html', post=post,file=image_file)
 
@@ -187,7 +188,7 @@ def imageDelete(pid):
     cur.execute('DELETE FROM Photos WHERE photo_id = %s', (pid,))
     db.commit()
     db.close()
-    return redirect(url_for('post.update'),iid=iid)
+    return redirect(url_for('post.update',iid=iid))
 
 @bp.route('/itemDelete/<int:iid>')
 def itemDelete(iid):
