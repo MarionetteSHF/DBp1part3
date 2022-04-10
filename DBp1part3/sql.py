@@ -40,19 +40,19 @@ def get_db():
 
     return engine
 
-def fetchall(table_name):
-
-    engine = get_db()
-    cur = engine.cursor()
-
-    engine.commit()
-
-    cur.execute("SELECT * FROM "+ str(table_name))
-    rows = cur.fetchall()
-    # rows = cur.fetchone()
-
-    engine.close()
-    return rows
+# def fetchall(table_name):
+#
+#     engine = get_db()
+#     cur = engine.cursor()
+#
+#     engine.commit()
+#
+#     cur.execute("SELECT * FROM "+ str(table_name))
+#     rows = cur.fetchall()
+#     # rows = cur.fetchone()
+#
+#     engine.close()
+#     return rows
 
 
 

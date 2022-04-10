@@ -241,21 +241,20 @@
         <div class="col-md-6 col-lg-4">
           <div class="box" id="box">
             <div class="img-box">
-
-              <img id="img" src="{{ url_for('static', filename='veg/images/index.png')}}" alt="">
+              <img id="img" style="width:180px" src="data:;base64,{{ x[4] }}" alt="{{ url_for('static', filename='veg/images/index.png')}}">
             </div>
             <div class="detail-box">
-              <a id="detaila" class="detaila" href="/display/{{x[4]}}">
-                {{x[2]}}
+              <a id="detaila" class="detaila" href="/display/{{x[3]}}">
+                {{x[0]}}
               </a>
               <div class="price_box">
                 <h6 class="price_heading">
-                  <span>$</span> {{x[5]}}
+                  <span>$</span> {{x[1]}}
                 </h6>
               </div>
               <div class="price_box">
                 <h6 class="price_heading">
-                  {{"Sale" if x[8] else "Need"}}
+                  {{"Sale" if x[2] else "Need"}}
                 </h6>
               </div>
             </div>

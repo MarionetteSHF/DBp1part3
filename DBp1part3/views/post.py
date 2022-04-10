@@ -5,8 +5,6 @@ from DBp1part3 import sql
 import urllib.request
 from io import BytesIO,StringIO
 import base64
-from PIL import Image
-
 from datetime import datetime
 
 
@@ -133,7 +131,7 @@ def display(iid):
     db = sql.get_db()
     cur = db.cursor()
     cur.execute(
-        "SELECT *  FROM Items_Posted WHERE item_id = %s",
+        "SELECT i.*, u.name, u.email,u.phone FROM Items_Posted i,Users u  WHERE item_id = %s",
         (iid,),
     )
     row = cur.fetchone()

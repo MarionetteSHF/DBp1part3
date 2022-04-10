@@ -17,9 +17,15 @@ def create_app():
 
     @app.route('/index')
     def index():
-        rows = sql.fetchall('Items_Posted')
+        # rows = sql.fetchall('Items_Posted')
+        db = sql.get_db()
+        cur = db.cursor()
+        cur.execute(
+            "SELECT i.title, i.price,i.neededitem,i.item_id,p.image_source FROM Items_Posted i, Photos p WHERE i.item_id = p.item_id ORDER BY i.posted_at DESC"
+        )
+        rows = cur.fetchall()
+        print(rows[0])
         return render_template('webpage/index.html', rows=rows)
-        # return render_template('index_old.html', rows=rows)
 
 
     app.register_blueprint(auth)

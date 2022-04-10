@@ -43,7 +43,7 @@
         <header class="header_section">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="/index">
                         <span>
                             CIRCULATION
                         </span>
@@ -229,6 +229,7 @@
 
 
 
+
     <div class="bg">
 
         <!-- about section -->
@@ -240,22 +241,47 @@
                             <h3 class="custom_heading ">
                                 About the item
                             </h3>
+                            <section>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="box" id="box">
 
+                                        <div class="detail-box">
+                                            <a id="detaila" class="detaila" href="">
+                                                Item:{{row[2]}}
+                                            </a>
+                                            <div class="price_box">
+                                                <h6 class="price_heading">
+                                                    <span>$</span> {{row[5]}}
+                                                </h6>
+                                            </div>
+                                            <div class="price_box">
+                                                <h6 class="price_heading">
+                                                    Description:{{row[3]}}
+                                                </h6>
+                                            </div>
+                                            <div class="price_box">
+                                                <h6 class="price_heading">
+                                                    Posted at:{{row[0]}}
+                                                </h6>
+                                            </div>
+                                            <div class="price_box">
+                                                <h6 class="price_heading">
+                                                    Category:{{row[6]}}
+                                                </h6>
+                                            </div>
+                                            <div class="price_box">
+                                                <h6 class="price_heading">
+                                                    Need or Sell:{{"Sale" if row[8] else "Need"}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
 
-                            <p class="">
-                                <p>Title:</p>{{row[2]}}
-                                <p>Price:</p>{{row[5]}}
-                                <p>Description:</p>{{row[3]}}
-                                <p>Category:</p>{{row[6]}}
-                                <p>Number:</p>{{row[7]}}
-                                <p>Need or Sell:</p>{{row[8]}}
-                            </p>
-                            <p>
-                                email:
-                            </p>
-                            <p>
-                                phone:
-                            </p>
+                            <p>owner:{{row[9]}}</p>
+                            <p>email:{{row[10]}}</p>
+                            <p>phone:{{row[11]}}</p>
                             <div>
                                 <a href="/addtowish/{{row[4]}}">
                                     Add to wish list
@@ -265,21 +291,19 @@
                     </div>
                     <div class="col-md-4">
                         <div style="text-align-last: center; font-size: 2em; font-weight:500;">
-                            <div>image</div>
+                            <div>IMAGE</div>
                         </div>
                         <div class="about_img-box">
-                            {% if file[0]%}
+                            {% for f in file%}
                             <tr>
-                                <td><img style="width:180px" src="data:;base64,{{ file[0][0] }}"></td>
+                                <td><img style="width:180px" src="data:;base64,{{ f[0] }}"></td>
                             </tr>
-                            {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
     </div>
 
 
@@ -324,12 +348,7 @@
                     <div class="col-md-4">
 
                         <div class="about_img-box">
-                            {% if file[1]%}
-                                <tr>
-                                    <td><img style="width:180px" src="data:;base64,{{ file[1][0] }}" alt=""></td>
-                                </tr>
-                                {% endif %}
-<!--                            <img src="{{ url_for('static', filename='veg/images/display2.png')}}" alt="">-->
+                            <img src="{{ url_for('static', filename='veg/images/display1.png')}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -374,11 +393,9 @@
                     <div class="col-md-4">
 
                         <div class="about_img-box">
-                            {% if file[2]%}
-                                <tr>
-                                    <td><img style="width:180px" src="data:;base64,{{ file[2][0] }}" alt=""></td>
-                                </tr>
-                            {% endif %}
+                            <tr>
+                                <td><img src="{{ url_for('static', filename='veg/images/display2.png')}}" alt=""></td>
+                            </tr>
                         </div>
                     </div>
                 </div>
