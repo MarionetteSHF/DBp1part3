@@ -179,7 +179,28 @@
             border: 2px solid rgb(19, 152, 169);
         }
 
+        #img {
+            width: 200px;
+            height: 200px;
+            max-width: 250px;
+            max-height: 250px;
 
+        }
+
+        .img-box {
+            width: 300px;
+        }
+
+
+
+        #detaila:hover {
+            color: rgb(53, 114, 178);
+        }
+
+        #detaila {
+            color: rgb(56, 182, 129);
+            text-decoration-line: underline;
+        }
 
 
 
@@ -188,21 +209,36 @@
             margin: 1em 1em 1em 1%
         }
     </style>
-
-    {% if file %}
+    <div style="display: flex;">
+        {% if file %}
         {% for img_info in file%}
-        <div>
-            <img style="width:180px" src="data:;base64,{{ img_info[1] }}">
-            <td><a href="/imageDelete/{{img_info[0]}}">delete</a></td>
+
+
+
+        <div class="posting">
+            <div class="box" id="box">
+                <!-- <div class="img-box">
+                <img id="img" style="width:180px" src="data:;base64,"
+                    alt="{{ url_for('static', filename='veg/images/index.png')}}">
+            </div> -->
+                <div class="img-box">
+                    <img id="img" style="width:180px" src="data:;base64,{{ img_info[1] }}">
+                    <td><a href="/imageDelete/{{img_info[0]}}">delete</a></td>
+                </div>
+            </div>
         </div>
         {% endfor %}
-    {% endif %}
+        {% endif %}
+
+    </div>
+
+
 
     <form action="" method="post" class="posting" enctype="multipart/form-data">
 
         <section class="firstC">
             <div class="form-example">
-                <label class="inputlabel" >Title </label>
+                <label class="inputlabel">Title </label>
                 <input class="postinput" type="text" name="title" required value="{{post[2]}}">
             </div>
             <div class="form-example">

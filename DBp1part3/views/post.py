@@ -88,16 +88,7 @@ def update(iid):
 
         error = None
 
-        if not title:
-            error = 'Title is required.'
-        if not price:
-            error = 'Price is required.'
-        if not wantorsell:
-            error = 'Want it or need it?'
-        if not number:
-            error = 'Number is required.'
-        if not category:
-            error = 'Category is required.'
+
         if error is not None:
             flash(error)
         else:
@@ -108,6 +99,7 @@ def update(iid):
                 ' WHERE item_id = %s',
                 (title, price,wantorsell,number,category, description,iid)
             )
+            db.commit()
             if file and allowed_file(file.filename):
                 img_stream = file.read()
 
