@@ -25,7 +25,14 @@
     <link href="{{ url_for('static',filename='veg/css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{ url_for('static',filename='veg/css/responsive.css') }}" rel="stylesheet" />
+
+    <!-- wtacher -->
+    <link href="{{ url_for('static',filename='display/css/style.css') }}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{{ url_for('static',filename='display/css/responsive.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='display/css/bootstrap.css') }}" rel="stylesheet" />
 </head>
+
 
 <body>
     <div class="hero_area">
@@ -217,30 +224,52 @@
     </style>
 
 
-    <form action="" method="post" class="posting">
 
 
-        <section>
-            <div class="col-md-6 col-lg-4">
-                <div class="box" id="box">
-                    <div class="img-box">
 
-                        <img id="img" src="{{ url_for('static', filename='veg/images/index.png')}}" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a id="detaila" class="detaila" href="">
-                            Title
-                        </a>
-                        <div class="price_box">
-                            <h6 class="price_heading">
-                                <span>$</span> 10
-                            </h6>
+
+
+    <div class="bg">
+
+        <!-- about section -->
+        <section class="about_section layout_padding" style="color: black;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5 offset-md-2">
+                        <div class="about_detail-box">
+                            <h3 class="custom_heading ">
+                                About the item
+                            </h3>
+
+
+                            <p class="">
+                                It is a description established fact that a reader will be distracted by the readable
+                                content
+                                of a page when
+                                looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+                                normal distribution
+                                of
+                                letters, as opposed to using 'Content here, content here', making it
+                            </p>
+                            <p>
+                                email:
+                            </p>
+                            <p>
+                                phone:
+                            </p>
+                            <div>
+                                <a href="/addtowish">
+                                    Add to wish list
+                                </a>
+                            </div>
                         </div>
-                        <div class="price_box">
-                            <h6 class="price_heading">
-                                <!-- "Sale" if x[8] else "Need" -->
-                                I want it!
-                            </h6>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="text-align-last: center; font-size: 2em; font-weight:500;">
+                            <div>PS5 $50</div>
+                        </div>
+                        <div class="about_img-box">
+                            <img src="{{ url_for('static', filename='veg/images/index.png')}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -248,68 +277,102 @@
         </section>
 
 
-        <section class="firstC">
-            <div class="form-example">
-                <label class="inputlabel" for="name">Title </label>
-                <input class="postinput" type="text" name="title" required>
-            </div>
-            <div class="form-example">
-                <label for="email" class="inputlabel">Price </label>
-                <input class="postinput" type="number" name="price" required>
-            </div>
+    </div>
 
-            <div class="form-example">
-                <label for="" class="inputlabel">Choose your category </label>
-                <select class="postinput" name="category">
 
-                    <option value="Furniture">Furniture</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Book">Book</option>
-                    <option value="Clothe">Clothe</option>
-                </select>
+
+
+
+
+
+    <div class="bg">
+
+        <!-- about section -->
+        <section class="about_section layout_padding" style="color: black;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5 offset-md-2">
+                        <div class="about_detail-box">
+                            <h3 class="custom_heading ">
+                                People's Comments
+                            </h3>
+                            <section class="poting">
+                                <section class="frstC">
+
+
+                                    <div class="fo-example">user1：this is what I want !</div>
+
+                                </section>
+                            </section>
+
+
+                            <!-- <p>
+                                phone:
+                            </p> -->
+                            <!-- <div>
+                                <a href="/addtowish">
+                                    Add to wish list
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="about_img-box">
+                            <img src="{{ url_for('static', filename='veg/images/display2.png')}}" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section>
-            <!-- <div class="form-example">
-                <label for="email" class="inputlabel">Number of the item </label>
-                <input class="postinput" type="number" name="number" id="email" required>
-            </div> -->
+
+    </div>
 
 
-            <div class="form-example">
-                <label for="" class="inputlabel">Sell or Need</label>
-                <select class="postinput" name="wantorsell">
-                    <option value="need">need</option>
-                    <option value="sell">sell</option>
-                </select>
-            </div>
+    <div class="bg">
 
-            <div class="form-example">
-                <label for="email" class="inputlabel">Description</label>
-                <input class="postinput" type="text" name="description" required style="width:200px; height:100px;"
-                    .onpropertychange="this.style.height = this.scrollHeight + 3 +'px';"
-                    oninput="this.style.height = this.scrollHeight + 3 + 'px';">
-            </div>
+        <!-- about section -->
+        <section class="about_section layout_padding" style="color: black;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5 offset-md-2">
+                        <div class="about_detail-box">
+                            <h3 class="custom_heading ">
+                                Leave your comment
+                            </h3>
 
-            <div class=" form-example">
-                <input class="postinput" type="submit" value="Submit the item">
+
+
+                            <form action="" method="post">
+
+
+                                <section class="firstC">
+                                    <div class="form-example">
+
+                                        <input class="poinput" type="text" name="comment" required>
+                                    </div>
+                                    <div class=" form-example">
+                                        <input class="ponput" type="submit" value="Submit your comment">
+                                    </div>
+
+                                </section>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="about_img-box">
+                            <img src="{{ url_for('static', filename='veg/images/display1.png')}}" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-    </form>
-
-    <form action="" method="post" class="posting">
 
 
-        <section class="firstC">
-            <div class="form-example">
-                <label class="inputlabel" for="name">Leave your comment </label>
-                <input class="postinput" type="text" name="comment" required>
-            </div>
-
-        </section>
-    </form>
-
+    </div>
 
 
 
