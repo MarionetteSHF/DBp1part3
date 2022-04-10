@@ -144,35 +144,8 @@
     </div>
 
     <!-- veg section -->
-    <!-- {% for x in rows %} -->
 
-
-
-    <!-- {% endfor %} -->
     <style>
-        #img {
-            width: 200px;
-            height: 200px;
-            max-width: 250px;
-            max-height: 250px;
-
-        }
-
-        .img-box {
-            width: 200px;
-        }
-
-
-
-        #detaila:hover {
-            color: rgb(53, 114, 178);
-        }
-
-        #detaila {
-            color: rgb(56, 182, 129);
-            text-decoration-line: underline;
-        }
-
         .posting {
 
             display: flex;
@@ -215,47 +188,16 @@
             margin: 1em 1em 1em 1%
         }
     </style>
-
-
     <form action="" method="post" class="posting">
-
-
-        <section>
-            <div class="col-md-6 col-lg-4">
-                <div class="box" id="box">
-                    <div class="img-box">
-
-                        <img id="img" src="{{ url_for('static', filename='veg/images/index.png')}}" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a id="detaila" class="detaila" href="">
-                            Title
-                        </a>
-                        <div class="price_box">
-                            <h6 class="price_heading">
-                                <span>$</span> 10
-                            </h6>
-                        </div>
-                        <div class="price_box">
-                            <h6 class="price_heading">
-                                <!-- "Sale" if x[8] else "Need" -->
-                                I want it!
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 
         <section class="firstC">
             <div class="form-example">
                 <label class="inputlabel" for="name">Title </label>
-                <input class="postinput" type="text" name="title" required>
+                <input class="postinput" type="text" name="title" required value="{{post[2]}}">
             </div>
             <div class="form-example">
                 <label for="email" class="inputlabel">Price </label>
-                <input class="postinput" type="number" name="price" required>
+                <input class="postinput" type="number" name="price" required value="{{post[5]}}">
             </div>
 
             <div class="form-example">
@@ -268,13 +210,19 @@
                     <option value="Clothe">Clothe</option>
                 </select>
             </div>
+
+            <div class="form-example">
+                <label for="email" class="inputlabel">Choose your pictures </label>
+                <input type="file" name="file" class="form-control" autocomplete="off">
+            </div>
+
         </section>
 
         <section>
-            <!-- <div class="form-example">
+            <div class="form-example">
                 <label for="email" class="inputlabel">Number of the item </label>
-                <input class="postinput" type="number" name="number" id="email" required>
-            </div> -->
+                <input class="postinput" type="number" name="number" id="email" required value="{{post[7]}}">
+            </div>
 
 
             <div class="form-example">
@@ -289,7 +237,7 @@
                 <label for="email" class="inputlabel">Description</label>
                 <input class="postinput" type="text" name="description" required style="width:200px; height:100px;"
                     .onpropertychange="this.style.height = this.scrollHeight + 3 +'px';"
-                    oninput="this.style.height = this.scrollHeight + 3 + 'px';">
+                    oninput="this.style.height = this.scrollHeight + 3 + 'px';" value="{{post[3]}}">
             </div>
 
             <div class=" form-example">
@@ -297,21 +245,22 @@
             </div>
         </section>
     </form>
-
-    <form action="" method="post" class="posting">
-
-
-        <section class="firstC">
-            <div class="form-example">
-                <label class="inputlabel" for="name">Leave your comment </label>
-                <input class="postinput" type="text" name="comment" required>
-            </div>
-
-        </section>
-    </form>
-
-
-
+    <p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    </p>
+    {% if filename %}
+    <div>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="500" height="600">
+    </div>
+    {% endif %}
 
     <section class="about_section ">
         <div class="about_bg_box">

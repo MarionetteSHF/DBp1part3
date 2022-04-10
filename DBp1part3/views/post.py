@@ -5,7 +5,7 @@ from DBp1part3 import sql
 import urllib.request
 import os
 from io import BytesIO,StringIO
-import base64
+import base64,io
 
 import psycopg2
 from PIL import Image
@@ -101,9 +101,9 @@ def convertToBinaryData(filename):
 @bp.route('/update/<int:iid>', methods=('GET', 'POST'))
 @auth
 def update(iid):
-    print(iid)
+    # print(iid)
     post = get_post(iid)
-    print(post[3])
+    # print(post[3])
     if request.method == 'POST':
 
         title = request.form['title']
@@ -159,13 +159,13 @@ def update(iid):
                 command = "INSERT INTO Photos (photo_id, item_id, image_source) VALUES (default,%s,%s)"  # create table cataract
                 params = (iid, psycopg2.Binary(img_buffer))
                 cur.execute(command, params)
-
+                print(params)
 
                 db.commit()
                 db.close()
             return redirect(url_for('index'))
 
-    return render_template('web/update.html', post=post)
+    return render_template('webpage/update.html', post=post)
 
 @app.route('/display/<filename>')
 def display_image(filename):
@@ -182,14 +182,19 @@ def display(id):
         (id,),
     )
     rows = cur.fetchone()
+    # print(rows)
     cur.execute(
         "SELECT image_source FROM Photos WHERE item_id = %s",
         (id,),
     )
-    file = cur.fetchone()
-    img = Image.open(BytesIO(file))
+    data = cur.fetchone()
+    # data = data[0]
+    # print(data)
 
-    return render_template('web/display.html', row = rows, file=img)
+    # img = Image.open(BytesIO(data))
+    # img_stream = base64.b64encode(img)
+    # return render_template('web/display.html', row = rows, img_stream=img)
+    return render_template('webpage/display.html')
 
 # @bp.route('/display/<int:id>')
 # @auth
