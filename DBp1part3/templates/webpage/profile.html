@@ -242,7 +242,7 @@
                     {% else %}
                     <td> Sell </td>
                     {% endif %}
-                    <td><a href="/update/{{item[3]}}">Edit</a></td>
+                    <td><a href="/update/{{item[3]}}/{{session['user_id']}}">Edit</a></td>
                     <td><a href="/itemDelete/{{item[3]}}">Delete</a></td>
                 </tr>
                 {% endfor %}

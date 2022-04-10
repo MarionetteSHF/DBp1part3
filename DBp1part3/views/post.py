@@ -72,9 +72,13 @@ def allowed_file(filename):
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@bp.route('/update/<int:iid>', methods=('GET', 'POST'))
+# @bp.route('/update/<int:iid>', methods=('GET', 'POST'))
+@bp.route('/update/<int:iid>/<int:uid>', methods=('GET', 'POST'))
 @auth
-def update(iid):
+def update(iid,uid):
+    if session["user_id"] !=uid:
+        return redirect(url_for('post.profile', id=session["user_id"]))
+
     post = get_post(iid)
     image_file = get_pic(iid)
     if request.method == 'POST':
@@ -113,7 +117,7 @@ def update(iid):
 
             else:
                 flash('Allowed image types are - png, jpg, jpeg, gif')
-        return redirect(url_for('post.update',iid=iid))
+        return redirect(url_for('post.update',iid=iid, uid=session["user_id"]))
 
     return render_template('webpage/update.html', post=post,file=image_file)
 
@@ -154,6 +158,8 @@ def display(iid):
 
 @bp.route('/profile/<int:id>')
 def profile(id):
+    if session["user_id"] != id:
+        return redirect(url_for('post.profile', id=session["user_id"]))
     db = sql.get_db()
     print(id)
     cur = db.cursor()
