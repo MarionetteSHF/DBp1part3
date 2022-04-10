@@ -117,7 +117,7 @@ def update(iid):
                                (iid, img_stream,))
                 db.commit()
                 db.close()
-                flash('Image successfully uploaded and displayed below')
+                flash('Image successfully uploaded and displayed above')
 
             else:
                 flash('Allowed image types are - png, jpg, jpeg, gif')
