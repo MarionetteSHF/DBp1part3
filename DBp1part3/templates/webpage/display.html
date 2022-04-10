@@ -243,13 +243,12 @@
 
 
                             <p class="">
-                                It is a description established fact that a reader will be distracted by the readable
-                                content
-                                of a page when
-                                looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                normal distribution
-                                of
-                                letters, as opposed to using 'Content here, content here', making it
+                                <p>Title:</p>{{row[2]}}
+                                <p>Price:</p>{{row[5]}}
+                                <p>Description:</p>{{row[3]}}
+                                <p>Category:</p>{{row[6]}}
+                                <p>Number:</p>{{row[7]}}
+                                <p>Need or Sell:</p>{{row[8]}}
                             </p>
                             <p>
                                 email:
@@ -266,10 +265,14 @@
                     </div>
                     <div class="col-md-4">
                         <div style="text-align-last: center; font-size: 2em; font-weight:500;">
-                            <div>PS5 $50</div>
+                            <div>image</div>
                         </div>
                         <div class="about_img-box">
-                            <img src="{{ url_for('static', filename='veg/images/index.png')}}" alt="">
+                            {% if file[0]%}
+                            <tr>
+                                <td><img style="width:180px" src="data:;base64,{{ file[0][0] }}"></td>
+                            </tr>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -319,7 +322,12 @@
                     <div class="col-md-4">
 
                         <div class="about_img-box">
-                            <img src="{{ url_for('static', filename='veg/images/display2.png')}}" alt="">
+                            {% if file[1]%}
+                                <tr>
+                                    <td><img style="width:180px" src="data:;base64,{{ file[1][0] }}" alt=""></td>
+                                </tr>
+                                {% endif %}
+<!--                            <img src="{{ url_for('static', filename='veg/images/display2.png')}}" alt="">-->
                         </div>
                     </div>
                 </div>
@@ -353,7 +361,7 @@
                                         <input class="poinput" type="text" name="comment" required>
                                     </div>
                                     <div class=" form-example">
-                                        <input class="ponput" type="submit" value="Submit your comment">
+                                        <input class="ponput" type="submit" value="Comment">
                                     </div>
 
                                 </section>
@@ -364,7 +372,11 @@
                     <div class="col-md-4">
 
                         <div class="about_img-box">
-                            <img src="{{ url_for('static', filename='veg/images/display1.png')}}" alt="">
+                            {% if file[2]%}
+                                <tr>
+                                    <td><img style="width:180px" src="data:;base64,{{ file[2][0] }}" alt=""></td>
+                                </tr>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

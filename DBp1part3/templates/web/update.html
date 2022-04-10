@@ -21,10 +21,13 @@
           {% endif %}
         {% endwith %}
     </p>
-    {% if filename %}
+    {% if file %}
+        {% for img_info in file%}
         <div>
-            <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="500" height="600">
+            <img style="width:180px" src="data:;base64,{{ img_info[1] }}">
+            <td><a href="/imageDelete/{{img_info[0]}}">delete</a></td>
         </div>
+        {% endfor %}
     {% endif %}
     <form method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="title" value ={{post[2]}}>

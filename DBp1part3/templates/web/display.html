@@ -16,10 +16,9 @@
 
       {% endfor %}
       <table>
-          {% for item in file%}
+          {% for img_stream in file%}
           <tr>
-            <td><img src="{{ url_for('static', filename='uploads/' + item[0]) }}" width="500" height="600">
-</td>
+              <td><img style="width:180px" src="data:;base64,{{ img_stream[0] }}"></td>
           </tr>
           {% endfor %}
       </table>
