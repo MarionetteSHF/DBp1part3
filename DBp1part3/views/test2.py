@@ -11,7 +11,7 @@ def auth(func):
     def inner(*args, **kwargs):
         username = session.get('user_id')
         if not username:
-            return redirect('/login')
+            return redirect('/index')
 
         return func(*args, **kwargs)
     return inner

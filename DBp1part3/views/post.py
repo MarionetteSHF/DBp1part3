@@ -157,6 +157,7 @@ def display(iid):
 
 
 @bp.route('/profile/<int:id>')
+@auth
 def profile(id):
     if session["user_id"] != id:
         return redirect(url_for('post.profile', id=session["user_id"]))
