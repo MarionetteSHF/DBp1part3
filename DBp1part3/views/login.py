@@ -77,7 +77,7 @@ def register():
                 else:
                     # flash(error)
                     # return render_template('auth/register/auth.html', error =error)
-                    return redirect(url_for("index"))
+                    return redirect(url_for("auth.register"))
             print(error)
             db.close()
             flash(error)

@@ -156,6 +156,7 @@ def display(iid):
     return render_template('webpage/display.html', row = row, file=img_stream_file,comms=comms)
 
 
+
 @bp.route('/profile/<int:id>')
 @auth
 def profile(id):
