@@ -138,7 +138,7 @@ def display(iid):
     )
     img_stream_file = cur.fetchall()
     cur.execute(
-        "SELECT u.name, c.comment_content  FROM Comments c,Users u WHERE c.user_id=u.user_id and item_id = %s",
+        "SELECT u.name, c.comment_content,c.comment_date  FROM Comments c,Users u WHERE c.user_id=u.user_id and item_id = %s",
         (iid,),
     )
     comms = cur.fetchall()
