@@ -46,7 +46,7 @@
                 <ul class="navbar-nav justify-content-between ">
                   <div class="User_option">
                     <li class="">
-                      <a class="" href="/profile/{{session['user_id']}}">
+                      <a class="" href="/profile/{{session['user_id'] if session['user_id'] else '1'}}">
                         <i class="fa fa-user" aria-hidden="true"></i>
                       </a>
                     </li>
