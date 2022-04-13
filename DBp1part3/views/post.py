@@ -188,7 +188,7 @@ def imageDelete(pid):
     cur.execute('DELETE FROM Photos WHERE photo_id = %s', (pid,))
     db.commit()
     db.close()
-    return redirect(url_for('post.update',iid=iid))
+    return redirect(url_for('post.update',iid=iid,uid=session["user_id"]))
 
 @bp.route('/itemDelete/<int:iid>')
 def itemDelete(iid):
